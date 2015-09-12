@@ -523,11 +523,11 @@ MetronicApp.run(["$rootScope", "settings", "$state", "$http", "Countries", "User
         $rootScope.orders = orders;
     });
 
-    console.log($rootScope.$settings.APIDomain + 'api/products');
-    $rootScope.products = [];
-    $http.get($rootScope.$settings.APIDomain + 'api/products').success(function (products) {
-        $rootScope.products = products;
-    });
+
+    //$rootScope.products = [];
+    //$http.get($rootScope.$settings.APIDomain + 'api/products').success(function (products) {
+    //    $rootScope.products = products;
+    //});
 
 
     $rootScope.getending = function (number) {

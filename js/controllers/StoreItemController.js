@@ -4,8 +4,6 @@ MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $htt
         if ($stateParams.url > 0) {
             jQuery('input[type=checkbox][value="' + $stateParams.url + '"]').trigger('click');
         }
-        //$rootScope.filterOrders();
-
     });
 
     $scope.$on('$viewContentLoaded', function () {

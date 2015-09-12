@@ -1,0 +1,29 @@
+{
+  "name": "categories_developers",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "category_id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "index": true
+    },
+    "name": {
+      "type": [
+        "string"
+      ]
+    },
+    "parent_id": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,78 @@
+{
+  "name": "orders",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date_end": {
+      "type": "date"
+    },
+    "user_id": {
+      "type": "number"
+    },
+    "title": {
+      "type": [
+        "string"
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "type": {
+      "type": "number"
+    },
+    "date_create": {
+      "type": "date"
+    },
+    "ready_url": {
+      "type": "string"
+    },
+    "category_id": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "pro": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": [
+        "string"
+      ]
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "attachment": {
+      "type": [
+        "string"
+      ]
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "skills": {
+      "type": [
+        "string"
+      ]
+    },
+    "id": {
+      "type": "number",
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "products",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "index": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "number"
+    },
+    "category_id": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "sales": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

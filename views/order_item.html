@@ -1,0 +1,87 @@
+<ul class="page-breadcrumb breadcrumb">
+	<li>
+		<a href="#">Home</a><i class="fa fa-circle"></i>
+	</li>
+	<li>
+		<a href="/#/freelance.html">Услуги</a>
+		<i class="fa fa-circle"></i>
+	</li>
+	<li class="active">
+		Заказ
+	</li>
+</ul>
+
+
+<div class="portlet light" ng-model="$scope.single_order" ng-controller="OrderItemController">
+	<div class="portlet-body">
+
+		<div class="row">
+			<div class="col-md-8 blog-page" ng-repeat="order in single_order">
+
+
+				<h4 class="bold">{{order.title[0]}}</h4>
+
+				<p class="price_output" style="float: right;position: relative;bottom: 30px;right: 25px;">
+					<i class="fa fa-money"></i>&nbsp;<span class="ng-binding">{{order.price}}{{order.currency}}</span>
+				</p>
+
+				<article style="margin-top: 25px">
+					{{order.description[0]}}
+				</article>
+				<hr/>
+
+				<ul class="l-item-features nopadding">
+					<li>
+						<i class="fa fa-map-marker"></i>{{order.city}}
+					</li>
+					<li ng-model="$scope.locatisation">
+						<i class="fa fa-briefcase"></i>
+						<span ng-if="order.type == 1">Разовый заказ</span>
+						<span ng-if="order.type == 2">Постоянная работа</span>
+						<span ng-if="order.type == 3">Конкурсы</span>
+					</li>
+					<li>
+						<i class="fa fa-clock-o"></i>{{ order.date_create | date:'dd.MM.yyyy'}}
+					</li>
+
+				</ul>
+				<br/><br/>
+
+
+				<a onclick="alert('Простое добавление предложения')" href class="btn" id="j-collapse-add" data-toggle="collapse" data-parent="#accordion" style="width: 100%;font-size: 18px;"><span style="border-bottom: 1px dashed;">Опубликовать своё предложение</span></a>
+
+				<br/><br/>
+
+				<h4 class="bold o-propositions-title">
+					<i class="fa fa-comments-o"></i> Предложения от исполнителей <span style="background-color: #4db3a4;
+    color: #fff;    padding: 2px 10px;" class="circle bold o-count-proposals">0</span>
+				</h4>
+
+
+			</div>
+			<div class="col-md-4 blog-page" style="border-left: 2px solid #4db3a4">
+
+
+				<h4 class="bold">Заказчик</h4>
+
+				<p>
+					<i class="fa fa-user" style="color: #CACACA;"></i>
+					<a href="/#/profile.html">Василий Петрович</a><span style="float:right"><a href="/"><i class="fa fa-comments-o"></i> Отзывы:
+					<span style="color: #09A209;">+3</span> /
+					<span style="color: #FF0000;">-1</span></a></span>
+				</p>
+
+				<p>
+					<i style="color: #CACACA;position: relative;right: 1px;font-size: 13px;bottom: 1px;" class="fa fa-envelope"></i> vasily@mail.ru
+				</p>
+
+				<p>
+					<i class="fa fa-phone" style="color: #CACACA;font-size: 18px; position: relative; top: 2px;"></i> +38 (096) 785-85-45
+				</p>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,36 @@
+{
+  "name": "language",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "id_locale": {
+      "type": "string"
+    },
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "index": true
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -299,27 +299,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             },
             controller: "StoreController",
             resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/StoreController.js',
-                            '/assets/admin/pages/css/freelance.css'
-                        ]
-                    });
-                }]
-            }
-        })
-        .state('store.filter', {
-            url: "/store/:catid",
-            templateUrl: "views/store.html",
-            data: {
-                pageTitle: 'Магазин',
-                pageSubTitle: ''
-            },
-            controller: "StoreController",
-            resolve: {
                 catid: ['$stateParams', function ($stateParams) {
                     return $stateParams.catid;
                 }],

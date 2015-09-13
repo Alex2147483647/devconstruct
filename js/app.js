@@ -68,11 +68,10 @@ devConstruct.controller('FooterController', ['$scope', function ($scope) {
 /* Setup Rounting For All Pages */
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-    // Redirect any unmatched url
+    // Redirect any unmatched url (404)
     $urlRouterProvider.otherwise("/home/");
 
     $stateProvider
-        // Home
         .state('home', {
             url: "/home/",
             templateUrl: "views/home.html",
@@ -100,7 +99,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // Blog
         .state('blog', {
             url: "/blog.html",
             templateUrl: "views/blog.html",
@@ -111,7 +109,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             controller: ""
 
         })
-        // Freelance
         .state('freelance', {
             url: "/freelance/:catid",
             templateUrl: "views/freelance.html",
@@ -137,7 +134,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // Freelance order item
         .state('freelance.order', {
             url: "/:catid/:orderid",
             templateUrl: "views/order_item.html",
@@ -161,7 +157,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // Freelance: add new order
         .state('freelance.neworder', {
             url: "/add_edit_order/:orderid",
             templateUrl: "views/add_order_item.html",
@@ -187,7 +182,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // News
         .state('news', {
             url: "/news.html",
             templateUrl: "views/news.html",
@@ -231,7 +225,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // User Profile
         .state("profile", {
             url: "/profile",
             templateUrl: "views/profile/main.html",
@@ -257,7 +250,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        // User Profile Dashboard
         .state("profile.dashboard", {
             url: "/dashboard",
             templateUrl: "views/profile/home.html",
@@ -266,7 +258,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageSubTitle: 'user profile dashboard sample'
             }
         })
-        // User Profile Account
         .state("profile.account", {
             url: "/account",
             templateUrl: "views/profile/account.html",

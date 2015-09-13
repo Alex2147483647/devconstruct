@@ -46,9 +46,9 @@ devConstruct.controller('AppController', ['$scope', '$rootScope', function ($sco
 
 /* Setup Layout Part - Header */
 devConstruct.controller('HeaderController', ['$scope', function ($scope) {
-    $scope.$on('$includeContentLoaded', function () {
-        //Layout.initHeader($scope); // init header
-    });
+    //$scope.$on('$includeContentLoaded', function () {
+    //    //Layout.initHeader($scope); // init header
+    //});
 }]);
 
 /* Setup Layout Part - Sidebar */

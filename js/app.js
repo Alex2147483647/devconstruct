@@ -52,7 +52,7 @@ devConstruct.controller('HeaderController', ['$scope', function ($scope) {
 }]);
 
 /* Setup Layout Part - Sidebar */
-devConstruct.controller('PageHeadController', ['$scope', function ($scope, User) {
+devConstruct.controller('PageHeadController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {
 
     });

@@ -69,7 +69,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'devConstruct',
+                        name: 'devConstructHome',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/morris/morris.css',
@@ -91,9 +91,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             data: {
                 pageTitle: 'Блог',
                 pageSubTitle: 'блог devConstruct'
-            },
-            controller: ""
-
+            }
         })
         .state('freelance', {
             url: "/freelance/:catid",

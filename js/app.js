@@ -274,7 +274,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageTitle: 'Услуги',
                 pageSubTitle: ''
             },
-            controller: "TodoController",
+            controller: "FreelanceController",
             resolve: {
                 catid: ['$stateParams', function ($stateParams) {
                     return $stateParams.catid;
@@ -290,7 +290,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                             '/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
                             '/assets/global/plugins/select2/select2.min.js',
                             '/assets/admin/pages/scripts/todo.js',
-                            'js/controllers/FreelanceController.js'
+                            '/js/controllers/FreelanceController.js'
                         ]
                     });
                 }]

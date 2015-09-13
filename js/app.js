@@ -291,7 +291,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('store', {
-            url: "/store/:catid",
+            url: "/store/",
             templateUrl: "views/store.html",
             data: {
                 pageTitle: 'Магазин',

@@ -24,13 +24,6 @@ var todo = function () {
             $(this).removeAttr('style');
         });
 
-        // init datepicker
-        $('.todo-taskbody-due').datepicker({
-            rtl: Metronic.isRTL(),
-            orientation: "left",
-            autoclose: true
-        });
-
         // init tags        
         $(".todo-taskbody-tags").select2({
             tags: ["Testing", "Important", "Info", "Pending", "Completed", "Requested", "Approved"]

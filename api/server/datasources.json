@@ -1,13 +1,4 @@
 {
-  "mysql": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "devconstruct.local",
-    "password": "",
-    "name": "mysql",
-    "user": "root",
-    "connector": "mysql"
-  },
   "mongoDB": {
     "host": "127.0.0.1",
     "port": 27017,

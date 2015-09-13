@@ -1,9 +1,5 @@
-/***
- Metronic AngularJS App Main Script
- ***/
-
-/* Metronic App */
-var MetronicApp = angular.module("MetronicApp", [
+/* devConstruct App */
+var devConstruct = angular.module("devConstruct", [
     "ui.router",
     "ui.bootstrap",
     "ui.bootstrap.modal",
@@ -12,73 +8,27 @@ var MetronicApp = angular.module("MetronicApp", [
     "lbServices"
 ]);
 
-
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
-MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
+devConstruct.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
         cssFilesInsertBefore: 'ng_load_plugins_before' // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
     });
 }]);
 
-/********************************************
- BEGIN: BREAKING CHANGE in AngularJS v1.3.x:
- *********************************************/
-/**
- `$controller` will no longer look for controllers on `window`.
- The old behavior of looking on `window` for controllers was originally intended
- for use in examples, demos, and toy apps. We found that allowing global controller
- functions encouraged poor practices, so we resolved to disable this behavior by
- default.
-
- To migrate, register your controllers with modules rather than exposing them
- as globals:
-
- Before:
-
- ```javascript
- function MyController() {
-  // ...
-}
- ```
-
- After:
-
- ```javascript
- angular.module('myApp', []).controller('MyController', [function() {
-  // ...
-}]);
-
- Although it's not recommended, you can re-enable the old behavior like this:
-
- ```javascript
- angular.module('myModule').config(['$controllerProvider', function($controllerProvider) {
-  // this option might be handy for migrating old apps, but please don't use it
-  // in new ones!
-  $controllerProvider.allowGlobals();
-}]);
- **/
-
 //AngularJS v1.3.x workaround for old style controller declarition in HTML
-MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
-    // this option might be handy for migrating old apps, but please don't use it
-    // in new ones!
+devConstruct.config(['$controllerProvider', function ($controllerProvider) {
     $controllerProvider.allowGlobals();
 }]);
 
-/********************************************
- END: BREAKING CHANGE in AngularJS v1.3.x:
- *********************************************/
-
 /* Setup global settings */
-MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
+devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     // supported languages
     var settings = {
         layout: {
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
         layoutImgPath: Metronic.getAssetsPath() + 'admin/layout/img/',
-        layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/',
-        APIDomain: 'http://devconstruct.com:3000/'
+        layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/'
     };
 
     $rootScope.settings = settings;
@@ -87,47 +37,41 @@ MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
 }]);
 
 /* Setup App Main Controller */
-MetronicApp.controller('AppController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+devConstruct.controller('AppController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.$on('$viewContentLoaded', function () {
         Metronic.initComponents(); // init core components
         Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive
     });
 }]);
 
-/***
- Layout Partials.
- By default the partials are loaded through AngularJS ng-include directive. In case they loaded in server side(e.g: PHP include function) then below partial
- initialization can be disabled and Layout.init() should be called on page load complete as explained above.
- ***/
-
 /* Setup Layout Part - Header */
-MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
+devConstruct.controller('HeaderController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader($scope); // init header
     });
 }]);
 
 /* Setup Layout Part - Sidebar */
-MetronicApp.controller('PageHeadController', ['$scope', function ($scope, User) {
+devConstruct.controller('PageHeadController', ['$scope', function ($scope, User) {
     $scope.$on('$includeContentLoaded', function () {
 
     });
 }]);
 
 /* Setup Layout Part - Footer */
-MetronicApp.controller('FooterController', ['$scope', function ($scope) {
+devConstruct.controller('FooterController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {
         Layout.initFooter(); // init footer
     });
 }]);
 
 /* Setup Rounting For All Pages */
-MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/home/");
     $stateProvider
-        // Dashboard
+        // Home
         .state('home', {
             url: "/home/",
             templateUrl: "views/home.html",
@@ -139,7 +83,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/morris/morris.css',
@@ -172,7 +116,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             '/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
                         ]
                     }, {
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         files: [
                             'js/controllers/GeneralPageController.js'
                         ]
@@ -199,7 +143,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             '/assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
                         ]
                     }, {
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         files: [
                             'js/controllers/UISelectController.js'
                         ]
@@ -229,7 +173,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
                             'js/controllers/OrderItemController.js'
@@ -239,27 +183,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             }
 
         })
-        //.state('store', {
-        //    url: "/store/:url",
-        //    templateUrl: "views/store.html",
-        //    data: {
-        //        pageTitle: 'Магазин',
-        //        pageSubTitle: 'тут продаются товары'
-        //    },
-        //    controller: "StoreItemController",
-        //    resolve: {
-        //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-        //            return $ocLazyLoad.load({
-        //                name: 'MetronicApp',
-        //                insertBefore: '#ng_load_plugins_before',
-        //                files: [
-        //                    'js/controllers/StoreItemController.js',
-        //                    '/assets/admin/pages/css/todo.css'
-        //                ]
-        //            });
-        //        }]
-        //    }
-        //})
         .state('add_order_item', {
             url: "/order/new",
             templateUrl: "views/add_order_item.html",
@@ -270,7 +193,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css',
@@ -297,7 +220,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/select2/select2.css',
@@ -319,11 +242,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
 
                         files: []
                     }, {
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         files: []
                     }]);
                 }]
@@ -340,7 +263,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
@@ -411,7 +334,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css',
@@ -440,7 +363,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
                             'js/controllers/StoreItemController.js',
@@ -462,7 +385,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
                             'js/controllers/StoreItemController.js'
@@ -484,7 +407,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name: 'MetronicApp',
+                        name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
 
@@ -502,192 +425,177 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 }]);
 
 /* Init global settings and run the app */
-MetronicApp.run(["$rootScope", "settings", "$state", "$http", "Countries", "Users", function ($rootScope, settings, $state, $http, Countries, Users) {
-
-    //$rootScope.$watch(function () {
-    //    return Users.isAuthenticated();
-    //}, function (authorized) {
-    //    $rootScope.auth = authorized;
-    //});
-
-    $rootScope.country_list = Countries.find();
-
+devConstruct.run(["$rootScope", "settings", "$state", "$http", function ($rootScope, settings, $state, $http) {
     $rootScope.$state = $state;
     $rootScope.$settings = settings;
 
 
-    $rootScope.categories_selected = [];
-    $rootScope.filterType = -1;
-    $rootScope.languages = [];
-    $http.get($rootScope.$settings.APIDomain + 'api/languages').success(function (languages) {
-        $rootScope.languages = languages;
-        $rootScope.language = $rootScope.languages[0].id_locale;
-        $rootScope.locatisation = {
-            orderTypes: []
-        };
+    //$rootScope.categories_selected = [];
+    //$rootScope.filterType = -1;
+    //$rootScope.languages = [];
+    //$http.get($rootScope.$settings.APIDomain + 'api/languages').success(function (languages) {
+    //    $rootScope.languages = languages;
+    //    $rootScope.language = $rootScope.languages[0].id_locale;
+    //    $rootScope.locatisation = {
+    //        orderTypes: []
+    //    };
+    //
+    //    $rootScope.languages.forEach(function (item) {
+    //        $rootScope.locatisation.orderTypes = [
+    //            ['Разовый заказ'],
+    //            ['Постоянная работа'],
+    //            ['Конкурсы']
+    //        ];
+    //    });
+    //});
 
-        $rootScope.languages.forEach(function (item) {
-            $rootScope.locatisation.orderTypes = [
-                ['Разовый заказ'],
-                ['Постоянная работа'],
-                ['Конкурсы']
-            ];
-        });
-    });
+    //$rootScope.categories = [];
+    //$http.get($rootScope.$settings.APIDomain + 'api/categories').success(function (categories) {
+    //    $rootScope.categories = categories;
+    //});
 
-    $rootScope.categories = [];
-    $http.get($rootScope.$settings.APIDomain + 'api/categories').success(function (categories) {
-        $rootScope.categories = categories;
-    });
+    //$rootScope.categories_developer = [];
+    //$http.get($rootScope.$settings.APIDomain + 'api/categories_developers').success(function (categories_developer) {
+    //    $rootScope.categories_developer = categories_developer;
+    //});
 
-    $rootScope.categories_developer = [];
-    $http.get($rootScope.$settings.APIDomain + 'api/categories_developers').success(function (categories_developer) {
-        $rootScope.categories_developer = categories_developer;
-    });
-
-    $rootScope.orders = [];
-    $http.get($rootScope.$settings.APIDomain + 'api/orders').success(function (orders) {
-        $rootScope.orders = orders;
-    });
-
-
-    //$rootScope.products = [];
-    //$http.get($rootScope.$settings.APIDomain + 'api/products').success(function (products) {
-    //    $rootScope.products = products;
+    //$rootScope.orders = [];
+    //$http.get($rootScope.$settings.APIDomain + 'api/orders').success(function (orders) {
+    //    $rootScope.orders = orders;
     //});
 
 
-    $rootScope.getending = function (number) {
-        return number % 10 == 0 ? 'ов' : (number % 10 == 1) ? '' : (number % 10 > 1 && number % 10 < 5) ? 'а' : 'ов';
-    };
+    //$rootScope.getending = function (number) {
+    //    return number % 10 == 0 ? 'ов' : (number % 10 == 1) ? '' : (number % 10 > 1 && number % 10 < 5) ? 'а' : 'ов';
+    //};
 
-    $rootScope.filterOrders = function () {
-        if ($('[data-content-type].active').data('content-type') == 'orders') {
-            var filters = [],
-                filter_text = $('[name="order_name"]').val(),
-                order_type = $('[data-order-type].active').data('order-type'),
-                url = $rootScope.$settings.APIDomain + 'api/orders/?',
-                filter = 'filter[where][and][0][category_id]',
-                i = 0;
+    //$rootScope.filterOrders = function () {
+    //    if ($('[data-content-type].active').data('content-type') == 'orders') {
+    //        var filters = [],
+    //            filter_text = $('[name="order_name"]').val(),
+    //            order_type = $('[data-order-type].active').data('order-type'),
+    //            url = $rootScope.$settings.APIDomain + 'api/orders/?',
+    //            filter = 'filter[where][and][0][category_id]',
+    //            i = 0;
+    //
+    //        if ($('[name=\'category[]\']:checked').length > 1) {
+    //            $('[name=\'category[]\']:checked').each(function () {
+    //                filters.push('filter[where][and][0][category_id][inq]=' + $(this).val() + '&');
+    //            });
+    //        } else {
+    //            $('[name=\'category[]\']:checked').each(function () {
+    //                filters.push('filter[where][and][0][category_id]=' + $(this).val() + '&');
+    //            });
+    //        }
+    //
+    //        i++;
+    //
+    //        if (order_type > -1) {
+    //            filters.push('filter[where][and][' + i + '][type]=' + order_type + '&');
+    //            i++;
+    //        }
+    //
+    //        if (filter_text != '') {
+    //            filters.push('filter[where][and][' + i + '][title][like]=%25' + filter_text + '%25&');
+    //            i++;
+    //        }
+    //
+    //        $rootScope.filterType = $('[data-order-type].active').data('order-type');
+    //
+    //        $http.get(url + filters.join('')).success(function (orders) {
+    //            $rootScope.orders = orders;
+    //        });
+    //    } else {
+    //
+    //    }
+    //};
 
-            if ($('[name=\'category[]\']:checked').length > 1) {
-                $('[name=\'category[]\']:checked').each(function () {
-                    filters.push('filter[where][and][0][category_id][inq]=' + $(this).val() + '&');
-                });
-            } else {
-                $('[name=\'category[]\']:checked').each(function () {
-                    filters.push('filter[where][and][0][category_id]=' + $(this).val() + '&');
-                });
-            }
+    //$rootScope.dropdownChecker = function (element) {
+    //    $(this).closest('ul').prev('button').text($(this).text());
+    //};
 
-            i++;
-
-            if (order_type > -1) {
-                filters.push('filter[where][and][' + i + '][type]=' + order_type + '&');
-                i++;
-            }
-
-            if (filter_text != '') {
-                filters.push('filter[where][and][' + i + '][title][like]=%25' + filter_text + '%25&');
-                i++;
-            }
-
-            $rootScope.filterType = $('[data-order-type].active').data('order-type');
-
-            $http.get(url + filters.join('')).success(function (orders) {
-                $rootScope.orders = orders;
-            });
-        } else {
-
-        }
-    };
-
-    $rootScope.dropdownChecker = function (element) {
-        $(this).closest('ul').prev('button').text($(this).text());
-    };
-
-    $rootScope.validateEmail = function (email) {
-        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        return re.test(email);
-    };
+    //$rootScope.validateEmail = function (email) {
+    //    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    //    return re.test(email);
+    //};
 
 
-    $rootScope.transliterate = function (text) {
-        var transl = new Array();
-        transl['А'] = 'A';
-        transl['а'] = 'a';
-        transl['Б'] = 'B';
-        transl['б'] = 'b';
-        transl['В'] = 'V';
-        transl['в'] = 'v';
-        transl['Г'] = 'G';
-        transl['г'] = 'g';
-        transl['Д'] = 'D';
-        transl['д'] = 'd';
-        transl['Е'] = 'E';
-        transl['е'] = 'e';
-        transl['Ё'] = 'Yo';
-        transl['ё'] = 'yo';
-        transl['Ж'] = 'Zh';
-        transl['ж'] = 'zh';
-        transl['З'] = 'Z';
-        transl['з'] = 'z';
-        transl['И'] = 'I';
-        transl['и'] = 'i';
-        transl['Й'] = 'J';
-        transl['й'] = 'j';
-        transl['К'] = 'K';
-        transl['к'] = 'k';
-        transl['Л'] = 'L';
-        transl['л'] = 'l';
-        transl['М'] = 'M';
-        transl['м'] = 'm';
-        transl['Н'] = 'N';
-        transl['н'] = 'n';
-        transl['О'] = 'O';
-        transl['о'] = 'o';
-        transl['П'] = 'P';
-        transl['п'] = 'p';
-        transl['Р'] = 'R';
-        transl['р'] = 'r';
-        transl['С'] = 'S';
-        transl['с'] = 's';
-        transl['Т'] = 'T';
-        transl['т'] = 't';
-        transl['У'] = 'U';
-        transl['у'] = 'u';
-        transl['Ф'] = 'F';
-        transl['ф'] = 'f';
-        transl['Х'] = 'X';
-        transl['х'] = 'x';
-        transl['Ц'] = 'C';
-        transl['ц'] = 'c';
-        transl['Ч'] = 'Ch';
-        transl['ч'] = 'ch';
-        transl['Ш'] = 'Sh';
-        transl['ш'] = 'sh';
-        transl['Щ'] = 'Shh';
-        transl['щ'] = 'shh';
-        transl['Ъ'] = '';
-        transl['ъ'] = '';
-        transl['Ы'] = '';
-        transl['ы'] = 'y';
-        transl['Ь'] = '';
-        transl['ь'] = '';
-        transl['Э'] = 'E';
-        transl['э'] = 'e';
-        transl['Ю'] = 'Yu';
-        transl['ю'] = 'yu';
-        transl['Я'] = 'Ya';
-        transl['я'] = 'ya';
-        transl['і'] = 'i';
-        transl['І'] = 'I';
-        transl[' '] = '-';
-        transl['ь'] = '';
-        transl['ъ'] = '';
-
-        return text.split('').map(function (item) {
-            return transl[item] != null ? transl[item] : item;
-        }).join('');
-    }
+    //$rootScope.transliterate = function (text) {
+    //    var transl = new Array();
+    //    transl['А'] = 'A';
+    //    transl['а'] = 'a';
+    //    transl['Б'] = 'B';
+    //    transl['б'] = 'b';
+    //    transl['В'] = 'V';
+    //    transl['в'] = 'v';
+    //    transl['Г'] = 'G';
+    //    transl['г'] = 'g';
+    //    transl['Д'] = 'D';
+    //    transl['д'] = 'd';
+    //    transl['Е'] = 'E';
+    //    transl['е'] = 'e';
+    //    transl['Ё'] = 'Yo';
+    //    transl['ё'] = 'yo';
+    //    transl['Ж'] = 'Zh';
+    //    transl['ж'] = 'zh';
+    //    transl['З'] = 'Z';
+    //    transl['з'] = 'z';
+    //    transl['И'] = 'I';
+    //    transl['и'] = 'i';
+    //    transl['Й'] = 'J';
+    //    transl['й'] = 'j';
+    //    transl['К'] = 'K';
+    //    transl['к'] = 'k';
+    //    transl['Л'] = 'L';
+    //    transl['л'] = 'l';
+    //    transl['М'] = 'M';
+    //    transl['м'] = 'm';
+    //    transl['Н'] = 'N';
+    //    transl['н'] = 'n';
+    //    transl['О'] = 'O';
+    //    transl['о'] = 'o';
+    //    transl['П'] = 'P';
+    //    transl['п'] = 'p';
+    //    transl['Р'] = 'R';
+    //    transl['р'] = 'r';
+    //    transl['С'] = 'S';
+    //    transl['с'] = 's';
+    //    transl['Т'] = 'T';
+    //    transl['т'] = 't';
+    //    transl['У'] = 'U';
+    //    transl['у'] = 'u';
+    //    transl['Ф'] = 'F';
+    //    transl['ф'] = 'f';
+    //    transl['Х'] = 'X';
+    //    transl['х'] = 'x';
+    //    transl['Ц'] = 'C';
+    //    transl['ц'] = 'c';
+    //    transl['Ч'] = 'Ch';
+    //    transl['ч'] = 'ch';
+    //    transl['Ш'] = 'Sh';
+    //    transl['ш'] = 'sh';
+    //    transl['Щ'] = 'Shh';
+    //    transl['щ'] = 'shh';
+    //    transl['Ъ'] = '';
+    //    transl['ъ'] = '';
+    //    transl['Ы'] = '';
+    //    transl['ы'] = 'y';
+    //    transl['Ь'] = '';
+    //    transl['ь'] = '';
+    //    transl['Э'] = 'E';
+    //    transl['э'] = 'e';
+    //    transl['Ю'] = 'Yu';
+    //    transl['ю'] = 'yu';
+    //    transl['Я'] = 'Ya';
+    //    transl['я'] = 'ya';
+    //    transl['і'] = 'i';
+    //    transl['І'] = 'I';
+    //    transl[' '] = '-';
+    //    transl['ь'] = '';
+    //    transl['ъ'] = '';
+    //
+    //    return text.split('').map(function (item) {
+    //        return transl[item] != null ? transl[item] : item;
+    //    }).join('');
+    //}
 }]);

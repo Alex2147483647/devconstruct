@@ -51,6 +51,13 @@ devConstruct.controller('HeaderController', ['$scope', function ($scope) {
     });
 }]);
 
+/* Setup Layout Part - Sidebar */
+devConstruct.controller('PageHeadController', ['$scope', function ($scope) {
+    $scope.$on('$includeContentLoaded', function () {
+
+    });
+}]);
+
 /* Setup Layout Part - Footer */
 devConstruct.controller('FooterController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {

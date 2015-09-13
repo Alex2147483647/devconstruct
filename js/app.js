@@ -31,27 +31,6 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
-/* Setup Layout Part - Header */
-//devConstruct.controller('HeaderController', ['$scope', function ($scope) {
-//    $scope.$on('$includeContentLoaded', function () {
-//    //    //Layout.initHeader($scope); // init header
-//    });
-//}]);
-
-/* Setup Layout Part - Sidebar */
-//devConstruct.controller('PageHeadController', ['$scope', function ($scope) {
-//    $scope.$on('$includeContentLoaded', function () {
-//
-//    });
-//}]);
-
-/* Setup Layout Part - Footer */
-//devConstruct.controller('FooterController', ['$scope', function ($scope) {
-//    $scope.$on('$includeContentLoaded', function () {
-//        //Layout.initFooter(); // init footer
-//    });
-//}]);
-
 /* Setup Rounting For All Pages */
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url (404)

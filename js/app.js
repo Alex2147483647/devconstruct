@@ -366,10 +366,8 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
 }]);
 
 /* Init global settings and run the app */
-devConstruct.run(["$rootScope", "settings", "$state", "$http", function ($rootScope, settings, $state, $http) {
+devConstruct.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state;
-    $rootScope.$settings = settings;
-
 
     //$rootScope.categories_selected = [];
     //$rootScope.filterType = -1;

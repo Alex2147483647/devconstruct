@@ -127,7 +127,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/admin/pages/css/freelance.css',
-                            '/assets/admin/pages/scripts/freelance.js',
                             '/js/controllers/FreelanceController.js'
                         ]
                     });
@@ -175,7 +174,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         insertBefore: '#ng_load_plugins_before',
                         files: [
                             '/assets/admin/pages/css/freelance.css',
-                            '/assets/admin/pages/scripts/freelance.js',
                             '/js/controllers/FreelanceAddEditController.js'
                         ]
                     });

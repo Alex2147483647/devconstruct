@@ -290,30 +290,30 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageSubTitle: 'user store reviews sample'
             }
         })
-        .state('store', {
-            url: "/store",
-            templateUrl: "views/store.html",
-            data: {
-                pageTitle: 'Магазин',
-                pageSubTitle: ''
-            },
-            controller: "StoreController",
-            resolve: {
-                catid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.catid;
-                }],
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/StoreController.js',
-                            '/assets/admin/pages/css/freelance.css'
-                        ]
-                    });
-                }]
-            }
-        })
+        //.state('store', {
+        //    url: "/store",
+        //    templateUrl: "views/store.html",
+        //    data: {
+        //        pageTitle: 'Магазин',
+        //        pageSubTitle: ''
+        //    },
+        //    controller: "StoreController",
+        //    resolve: {
+        //        catid: ['$stateParams', function ($stateParams) {
+        //            return $stateParams.catid;
+        //        }],
+        //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+        //            return $ocLazyLoad.load({
+        //                name: 'devConstruct',
+        //                insertBefore: '#ng_load_plugins_before',
+        //                files: [
+        //                    '/js/controllers/StoreController.js',
+        //                    '/assets/admin/pages/css/freelance.css'
+        //                ]
+        //            });
+        //        }]
+        //    }
+        //})
         //.state('store.product', {
         //    url: "/:catid/:productid",
         //    templateUrl: "views/product.html",
@@ -337,7 +337,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
         //        }]
         //    }
         //})
-        .state('store.cart', {
+        .state('storecart', {
             url: "/cart",
             templateUrl: "views/cart.html",
             data: {

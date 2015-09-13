@@ -1,5 +1,5 @@
 {
-  "name": "language",
+  "name": "l10n",
   "base": "PersistedModel",
   "strict": false,
   "idInjection": false,
@@ -7,17 +7,10 @@
     "validateUpsert": true
   },
   "properties": {
-    "code": {
-      "type": "string"
-    },
-    "locale": {
-      "type": "string"
-    },
-    "image": {
-      "type": "string"
-    },
-    "id_locale": {
-      "type": "string"
+    "status": {
+      "type": "number",
+      "required": true,
+      "index": false
     },
     "id": {
       "type": "number",
@@ -25,8 +18,21 @@
       "required": true,
       "index": true
     },
+    "sort_order": {
+      "type": "number"
+    },
     "name": {
-      "type": "string"
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": [
+        "string"
+      ],
+      "required": true,
+      "index": false
     }
   },
   "validations": [],

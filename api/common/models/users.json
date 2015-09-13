@@ -7,13 +7,82 @@
     "validateUpsert": true
   },
   "properties": {
-    "fullname": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "index": true
+    },
+    "lastname": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "busyness": {
+      "type": [
+        "string"
+      ]
+    },
+    "category_id": {
+      "type": "number",
+      "index": true
+    },
+    "rating": {
+      "type": "number",
+      "index": false
+    },
+    "is_pro": {
+      "type": "boolean"
+    },
+    "account_type": {
       "type": "string"
     },
-    "country": {
+    "price_rate": {
       "type": "string"
+    },
+    "min_price": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "skype": {
+      "type": "string"
+    },
+    "about_user": {
+      "type": [
+        "string"
+      ]
+    },
+    "firstname": {
+      "type": [
+        "string"
+      ],
+      "id": false,
+      "required": true
+    },
+    "usersite_url": {
+      "type": "string"
+    },
+    "country_id": {
+      "type": "number"
     },
     "city": {
+      "type": "string"
+    },
+    "age": {
+      "type": "number"
+    },
+    "experience": {
+      "type": "number"
+    },
+    "userpic": {
+      "type": "string"
+    },
+    "last_seen": {
+      "type": "date"
+    },
+    "usercart": {
       "type": "string"
     }
   },

@@ -7,15 +7,25 @@
     "validateUpsert": true
   },
   "properties": {
-    "id": {
-      "type": "number",
-      "index": true
-    },
     "name": {
-      "type": "string"
+      "type": [
+        "string"
+      ],
+      "required": true
     },
     "flag": {
-      "type": "string"
+      "type": "string",
+      "index": false
+    },
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "index": true
+    },
+    "language_id": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

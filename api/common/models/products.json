@@ -14,25 +14,64 @@
       "index": true
     },
     "title": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "category_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "description": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "attachment": {
+      "type": [
+        "array"
+      ],
+      "required": true
+    },
+    "attributes_browser": {
+      "type": [
+        "string"
+      ],
+      "required": false
+    },
+    "attributes_compatibility": {
+      "type": [
+        "string"
+      ]
+    },
+    "attributes_columns": {
+      "type": "string"
+    },
+    "attributes_tpl_type": {
+      "type": "string"
+    },
+    "demo_url": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "comment": {
       "type": "string"
     },
     "user_id": {
-      "type": "number"
+      "type": "number",
+      "required": true,
+      "index": true
     },
-    "category_id": {
-      "type": "number"
+    "approved": {
+      "type": "boolean"
     },
-    "description": {
+    "seo_url": {
       "type": "string"
-    },
-    "price": {
-      "type": "number"
-    },
-    "currency": {
-      "type": "string"
-    },
-    "sales": {
-      "type": "number"
     }
   },
   "validations": [],

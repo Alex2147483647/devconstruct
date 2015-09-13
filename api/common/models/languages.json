@@ -1,5 +1,5 @@
 {
-  "name": "categories_developers",
+  "name": "languages",
   "base": "PersistedModel",
   "strict": false,
   "idInjection": false,
@@ -7,7 +7,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "category_id": {
+    "id": {
       "type": "number",
       "id": true,
       "required": true,
@@ -16,10 +16,25 @@
     "name": {
       "type": [
         "string"
-      ]
+      ],
+      "required": true
     },
-    "parent_id": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string"
+    },
+    "sort_order": {
       "type": "number"
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "locale": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

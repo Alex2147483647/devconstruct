@@ -7,23 +7,39 @@
     "validateUpsert": true
   },
   "properties": {
-    "category_id": {
-      "type": "number",
-      "id": true,
-      "required": true,
-      "index": true
-    },
     "name": {
       "type": [
         "string"
       ],
-      "required": false
+      "required": true
     },
     "parent_id": {
       "type": "number",
       "id": false,
       "required": true,
+      "index": false
+    },
+    "status": {
+      "type": "number",
+      "required": true
+    },
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
       "index": true
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "index": false
+    },
+    "seo_url": {
+      "type": "string",
+      "required": false
+    },
+    "sort_order": {
+      "type": "number"
     }
   },
   "validations": [],

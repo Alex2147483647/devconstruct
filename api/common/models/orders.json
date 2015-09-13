@@ -7,57 +7,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "date_end": {
-      "type": "date"
-    },
-    "user_id": {
-      "type": "number"
-    },
-    "title": {
-      "type": [
-        "string"
-      ]
-    },
-    "price": {
-      "type": "string"
-    },
-    "type": {
-      "type": "number"
-    },
-    "date_create": {
-      "type": "date"
-    },
-    "ready_url": {
-      "type": "string"
-    },
-    "category_id": {
-      "type": "number"
-    },
-    "currency": {
-      "type": "string"
-    },
-    "pro": {
-      "type": "boolean"
-    },
-    "description": {
-      "type": [
-        "string"
-      ]
-    },
-    "country": {
-      "type": "string"
-    },
-    "city": {
-      "type": "string"
-    },
-    "attachment": {
-      "type": [
-        "string"
-      ]
-    },
-    "user_email": {
-      "type": "string"
-    },
     "user_name": {
       "type": "string"
     },
@@ -66,9 +15,68 @@
         "string"
       ]
     },
+    "title": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
     "id": {
       "type": "number",
+      "id": true,
+      "required": true,
       "index": true
+    },
+    "seo_url": {
+      "type": "string"
+    },
+    "type": {
+      "type": "number",
+      "required": true
+    },
+    "category_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "price": {
+      "type": "string",
+      "required": false
+    },
+    "currency_id": {
+      "type": "number"
+    },
+    "country_id": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "pro": {
+      "type": "boolean",
+      "required": true
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "number",
+      "index": true
+    },
+    "date_create": {
+      "type": "date",
+      "required": true
+    },
+    "attachment": {
+      "type": [
+        "array"
+      ]
     }
   },
   "validations": [],

@@ -1,7 +1,6 @@
 'use strict';
 
-devConstruct.controller('FreelanceController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders, Countries) {
-
+devConstruct.controller('FreelanceAddEditController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders) {
 
     $scope.addorder = function () {
 
@@ -74,26 +73,7 @@ devConstruct.controller('FreelanceController', function ($rootScope, $scope, $ht
 
         }
     };
-
-    $scope.$on('ngRepeatFinished', function (ev) {
-        if ($stateParams.catid > 0) {
-            jQuery('input[type=checkbox][value="' + $stateParams.catid + '"]').trigger('click');
-        }
-        $rootScope.filterOrders();
-    });
-
     $scope.$on('$viewContentLoaded', function () {
-
-        //console.log(Categories.find());
-
-        jQuery('.check-parent').unbind('click');
-
-        jQuery('[name="order_name"], [name="freelancer_name"]').on('change', function () {
-            $rootScope.filterOrders();
-        });
-
-        //$rootScope.categories = Categories.find();
-
         Metronic.initAjax();
     });
 

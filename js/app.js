@@ -111,37 +111,69 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             controller: ""
 
         })
-        .state('orders', {
-            url: "/orders/:url",
+        // Freelance
+        .state('freelance', {
+            url: "/freelance/:catid",
+            templateUrl: "views/freelance.html",
+            data: {
+                pageTitle: 'Услуги',
+                pageSubTitle: ''
+            },
+            controller: "FreelanceController",
+            resolve: {
+                catid: ['$stateParams', function ($stateParams) {
+                    return $stateParams.catid;
+                }],
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '/assets/admin/pages/css/freelance.css',
+                            '/assets/admin/pages/scripts/freelance.js',
+                            '/js/controllers/FreelanceController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        // Freelance order item
+        .state('freelance.order', {
+            url: "/:catid/:orderid",
             templateUrl: "views/order_item.html",
             data: {
-                pageTitle: 'Заказ №',
+                pageTitle: 'Заказ ',
                 pageSubTitle: 'Спецификация проекта'
             },
             controller: "OrderItemController",
             resolve: {
+                orderid: ['$stateParams', function ($stateParams) {
+                    return $stateParams.orderid;
+                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            'js/controllers/OrderItemController.js'
+                            '/js/controllers/OrderItemController.js'
                         ]
                     });
                 }]
             }
-
         })
         // Freelance: add new order
-        .state('add_order_item', {
-            url: "/order/new",
+        .state('freelance.neworder', {
+            url: "/add_edit_order/:orderid",
             templateUrl: "views/add_order_item.html",
             data: {
                 pageTitle: 'Добавить заказ',
                 pageSubTitle: ''
             },
-            controller: "FreelanceController",
+            controller: "FreelanceAddEditController",
             resolve: {
+                orderid: ['$stateParams', function ($stateParams) {
+                    return $stateParams.orderid;
+                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
@@ -149,7 +181,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         files: [
                             '/assets/admin/pages/css/freelance.css',
                             '/assets/admin/pages/scripts/freelance.js',
-                            '/js/controllers/FreelanceController.js'
+                            '/js/controllers/FreelanceAddEditController.js'
                         ]
                     });
                 }]
@@ -171,7 +203,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                             '/assets/global/plugins/select2/select2.css',
-                            '/assets/admin/pages/css/todo.css'
+                            '/assets/admin/pages/css/freelance.css'
                         ]
                     });
                 }]
@@ -204,8 +236,8 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             url: "/profile",
             templateUrl: "views/profile/main.html",
             data: {
-                pageTitle: 'User Profile',
-                pageSubTitle: 'user profile sample'
+                pageTitle: 'Профиль пользователя',
+                pageSubTitle: ''
             },
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -219,7 +251,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                             '/assets/global/plugins/jquery.sparkline.min.js',
                             '/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
                             '/assets/admin/pages/scripts/profile.js',
-                            'js/controllers/UserProfileController.js'
+                            '/js/controllers/UserProfileController.js'
                         ]
                     });
                 }]
@@ -267,14 +299,14 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageSubTitle: 'user store reviews sample'
             }
         })
-        .state('todo', {
-            url: "/freelance/:catid",
-            templateUrl: "views/todo.html",
+        .state('store', {
+            url: "/store/:catid",
+            templateUrl: "views/store.html",
             data: {
-                pageTitle: 'Услуги',
+                pageTitle: 'Магазин',
                 pageSubTitle: ''
             },
-            controller: "FreelanceController",
+            controller: "StoreController",
             resolve: {
                 catid: ['$stateParams', function ($stateParams) {
                     return $stateParams.catid;
@@ -282,87 +314,58 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css',
-                            '/assets/global/plugins/select2/select2.css',
-                            '/assets/admin/pages/css/todo.css',
-                            '/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
-                            '/assets/global/plugins/select2/select2.min.js',
-                            '/assets/admin/pages/scripts/todo.js',
-                            '/js/controllers/FreelanceController.js'
+                            '/js/controllers/StoreController.js',
+                            '/assets/admin/pages/css/freelance.css'
                         ]
                     });
                 }]
             }
         })
-        .state('store', {
-            url: "/store/:url",
-            templateUrl: "views/store.html",
+        .state('store.product', {
+            url: "/:catid/:productid",
+            templateUrl: "views/product.html",
             data: {
-                pageTitle: 'Магазин',
+                pageTitle: 'Товар ',
                 pageSubTitle: ''
             },
             controller: "StoreItemController",
             resolve: {
-                url: ['$stateParams', function ($stateParams) {
-                    return $stateParams.url;
+                productid: ['$stateParams', function ($stateParams) {
+                    return $stateParams.productid;
                 }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            'js/controllers/StoreItemController.js',
-                            '/assets/admin/pages/css/todo.css'
+                            '/js/controllers/StoreItemController.js'
                         ]
                     });
                 }]
             }
         })
-
-        .state('product', {
-            url: "/product/:url",
-            templateUrl: "views/product.html",
-            data: {
-                pageTitle: 'Товар №',
-                pageSubTitle: 'Описание'
-            },
-            controller: "StoreItemController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            'js/controllers/StoreItemController.js'
-                        ]
-                    });
-                }]
-            }
-
-        })
-
-        .state('product_add', {
-            url: "/products/add",
+        .state('add_edit_product', {
+            url: "/add_edit_product/:productid",
             templateUrl: "views/add_product_item.html",
             data: {
                 pageTitle: 'Добавить товар в магазин',
                 pageSubTitle: ''
             },
-            controller: "AddProductController",
+            controller: "ProductAddEditController",
             resolve: {
+                productid: ['$stateParams', function ($stateParams) {
+                    return $stateParams.productid;
+                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-
                             '/assets/global/plugins/select2/select2.css',
-
                             '/assets/global/plugins/select2/select2.min.js',
-
-                            'js/controllers/AddProductController.js'
+                            '/js/controllers/ProductAddEditController.js'
                         ]
                     });
                 }]

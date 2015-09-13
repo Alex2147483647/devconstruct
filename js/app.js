@@ -337,6 +337,26 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
+        .state('store.cart', {
+            url: "/cart",
+            templateUrl: "views/cart.html",
+            data: {
+                pageTitle: 'Корзина ',
+                pageSubTitle: ''
+            },
+            controller: "CartController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            '/js/controllers/CartController.js'
+                        ]
+                    });
+                }]
+            }
+        })
         .state('add_edit_product', {
             url: "/add_edit_product/:productid",
             templateUrl: "views/add_product_item.html",

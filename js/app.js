@@ -314,29 +314,29 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        .state('store.product', {
-            url: "/:catid/:productid",
-            templateUrl: "views/product.html",
-            data: {
-                pageTitle: 'Товар ',
-                pageSubTitle: ''
-            },
-            controller: "StoreItemController",
-            resolve: {
-                productid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.productid;
-                }],
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/StoreItemController.js'
-                        ]
-                    });
-                }]
-            }
-        })
+        //.state('store.product', {
+        //    url: "/:catid/:productid",
+        //    templateUrl: "views/product.html",
+        //    data: {
+        //        pageTitle: 'Товар ',
+        //        pageSubTitle: ''
+        //    },
+        //    controller: "StoreItemController",
+        //    resolve: {
+        //        productid: ['$stateParams', function ($stateParams) {
+        //            return $stateParams.productid;
+        //        }],
+        //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+        //            return $ocLazyLoad.load({
+        //                name: 'devConstruct',
+        //                insertBefore: '#ng_load_plugins_before',
+        //                files: [
+        //                    '/js/controllers/StoreItemController.js'
+        //                ]
+        //            });
+        //        }]
+        //    }
+        //})
         .state('store.cart', {
             url: "/cart",
             templateUrl: "views/cart.html",
@@ -356,33 +356,33 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                     });
                 }]
             }
-        })
-        .state('add_edit_product', {
-            url: "/add_edit_product/:productid",
-            templateUrl: "views/add_product_item.html",
-            data: {
-                pageTitle: 'Добавить товар в магазин',
-                pageSubTitle: ''
-            },
-            controller: "ProductAddEditController",
-            resolve: {
-                productid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.productid;
-                }],
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/assets/global/plugins/select2/select2.css',
-                            '/assets/global/plugins/select2/select2.min.js',
-                            '/js/controllers/ProductAddEditController.js'
-                        ]
-                    });
-                }]
-            }
-
-        })
+        });
+    //.state('add_edit_product', {
+    //    url: "/add_edit_product/:productid",
+    //    templateUrl: "views/add_product_item.html",
+    //    data: {
+    //        pageTitle: 'Добавить товар в магазин',
+    //        pageSubTitle: ''
+    //    },
+    //    controller: "ProductAddEditController",
+    //    resolve: {
+    //        productid: ['$stateParams', function ($stateParams) {
+    //            return $stateParams.productid;
+    //        }],
+    //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+    //            return $ocLazyLoad.load({
+    //                name: 'devConstruct',
+    //                insertBefore: '#ng_load_plugins_before',
+    //                files: [
+    //                    '/assets/global/plugins/select2/select2.css',
+    //                    '/assets/global/plugins/select2/select2.min.js',
+    //                    '/js/controllers/ProductAddEditController.js'
+    //                ]
+    //            });
+    //        }]
+    //    }
+    //
+    //})
 }]);
 
 /* Init global settings and run the app */

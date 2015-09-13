@@ -10,3 +10,16 @@ devConstruct.controller('HeaderController', function ($rootScope, $scope, $http,
         });
     });
 });
+
+
+devConstruct.controller('PageHeadController', function ($rootScope, $scope, $http, $timeout) {
+    $scope.$on('$viewContentLoaded', function () {
+        console.log('PageHeadController');
+    });
+});
+
+devConstruct.controller('FooterController', function ($rootScope, $scope, $http, $timeout) {
+    $scope.$on('$viewContentLoaded', function () {
+        console.log('FooterController');
+    });
+});

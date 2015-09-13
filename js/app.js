@@ -87,6 +87,13 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
+                            '/assets/global/plugins/morris/morris.css',
+                            '/assets/admin/pages/css/tasks.css',
+                            '/assets/global/plugins/morris/morris.min.js',
+                            '/assets/global/plugins/morris/raphael-min.js',
+                            '/assets/global/plugins/jquery.sparkline.min.js',
+                            '/assets/admin/pages/scripts/index3.js',
+                            '/assets/admin/pages/scripts/tasks.js',
                             '/js/controllers/HomeController.js'
                         ]
                     });
@@ -125,26 +132,24 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
 
         })
+        // Freelance: add new order
         .state('add_order_item', {
             url: "/order/new",
             templateUrl: "views/add_order_item.html",
             data: {
-                pageTitle: 'Добавить заказ'
+                pageTitle: 'Добавить заказ',
+                pageSubTitle: ''
             },
-            controller: "TodoController",
+            controller: "FreelanceController",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css',
-                            '/assets/global/plugins/select2/select2.css',
-                            '/assets/admin/pages/css/todo.css',
-                            '/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
-                            '/assets/global/plugins/select2/select2.min.js',
-                            '/assets/admin/pages/scripts/todo.js',
-                            'js/controllers/TodoController.js',
+                            '/assets/admin/pages/css/freelance.css',
+                            '/assets/admin/pages/scripts/freelance.js',
+                            '/js/controllers/FreelanceController.js'
                         ]
                     });
                 }]
@@ -285,7 +290,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                             '/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
                             '/assets/global/plugins/select2/select2.min.js',
                             '/assets/admin/pages/scripts/todo.js',
-                            'js/controllers/TodoController.js'
+                            'js/controllers/FreelanceController.js'
                         ]
                     });
                 }]

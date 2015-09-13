@@ -1,8 +1,12 @@
 'use strict';
 
-devConstruct.controller('HomeController', function ($rootScope, $scope, $http, $timeout) {
+devConstruct.controller('HeaderController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
-        // initialize core components
-        Metronic.initAjax();
+        console.log('PageHeadController');
+        $rootScope.listCategories = Categories.find({
+            where: {
+                type: "freelance"
+            }
+        });
     });
 });

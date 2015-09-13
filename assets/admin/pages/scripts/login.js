@@ -1,5 +1,4 @@
 var Login = function () {
-
     var handleLogin = function () {
 
         $('.login-form').validate({

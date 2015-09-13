@@ -351,7 +351,8 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/js/controllers/CartController.js'
+                            '/js/controllers/CartController.js',
+                            '/assets/admin/pages/css/freelance.css'
                         ]
                     });
                 }]

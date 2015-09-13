@@ -87,68 +87,9 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                         name: 'devConstruct',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                            '/assets/global/plugins/morris/morris.css',
-                            '/assets/admin/pages/css/tasks.css',
-                            '/assets/global/plugins/morris/morris.min.js',
-                            '/assets/global/plugins/morris/raphael-min.js',
-                            '/assets/global/plugins/jquery.sparkline.min.js',
-                            '/assets/admin/pages/scripts/index3.js',
-                            '/assets/admin/pages/scripts/tasks.js',
                             '/js/controllers/HomeController.js'
                         ]
                     });
-                }]
-            }
-        })
-        // AngularJS plugins
-        .state('fileupload', {
-            url: "/file_upload.html",
-            templateUrl: "views/file_upload.html",
-            data: {
-                pageTitle: 'AngularJS File Upload',
-                pageSubTitle: 'angularjs file upload'
-            },
-            controller: "GeneralPageController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'angularFileUpload',
-                        files: [
-                            '/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
-                        ]
-                    }, {
-                        name: 'devConstruct',
-                        files: [
-                            'js/controllers/GeneralPageController.js'
-                        ]
-                    }]);
-                }]
-            }
-        })
-        // UI Select
-        .state('uiselect', {
-            url: "/ui_select.html",
-            templateUrl: "views/ui_select.html",
-            data: {
-                pageTitle: 'AngularJS Ui Select',
-                pageSubTitle: 'select2 written in angularjs'
-            },
-            controller: "UISelectController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'ui.select',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '/assets/global/plugins/angularjs/plugins/ui-select/select.min.css',
-                            '/assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
-                        ]
-                    }, {
-                        name: 'devConstruct',
-                        files: [
-                            'js/controllers/UISelectController.js'
-                        ]
-                    }]);
                 }]
             }
         })

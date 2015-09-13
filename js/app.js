@@ -115,7 +115,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('freelance.add_edit', {
-            url: "/add-edit/{order_url}",
+            url: "/add-edit",
             templateUrl: "views/add_order_item.html",
             data: {
                 pageTitle: 'Добавить заказ',
@@ -123,9 +123,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             },
             controller: "FreelanceAddEditController",
             resolve: {
-                order_url: ['$stateParams', function ($stateParams) {
-                    return $stateParams.order_url;
-                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
@@ -135,6 +132,18 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                             '/js/controllers/FreelanceAddEditController.js'
                         ]
                     });
+                }]
+            }
+        })
+        .state('freelance.add_edit.order', {
+            url: "/{order_url}",
+            data: {
+                pageTitle: 'Редактировать заказ',
+                pageSubTitle: ''
+            },
+            resolve: {
+                order_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.order_url;
                 }]
             }
         })
@@ -298,17 +307,14 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('store.add_edit', {
-            url: "/add-edit/:product_url",
+            url: "/add-edit",
             templateUrl: "views/add_product_item.html",
             data: {
-                pageTitle: 'Добавить товар в магазин',
+                pageTitle: 'Добавить товар',
                 pageSubTitle: ''
             },
             controller: "ProductAddEditController",
             resolve: {
-                product_url: ['$stateParams', function ($stateParams) {
-                    return $stateParams.product_url;
-                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
@@ -322,6 +328,18 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
 
+        })
+        .state('store.add_edit.product', {
+            url: '/{product_url}',
+            data: {
+                pageTitle: 'Редактировать товар',
+                pageSubTitle: ''
+            },
+            resolve: {
+                product_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.product_url;
+                }]
+            }
         })
         .state('store.cart', {
             url: "/shopping-cart",

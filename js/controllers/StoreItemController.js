@@ -4,6 +4,8 @@ MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $htt
         if ($stateParams.url > 0) {
             jQuery('input[type=checkbox][value="' + $stateParams.url + '"]').trigger('click');
         }
+        //$rootScope.filterOrders();
+
     });
 
     $scope.$on('$viewContentLoaded', function () {
@@ -30,6 +32,20 @@ MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $htt
                         });
                 });
         } else if ($scope.$state.current.name == 'store') {
+
+
+            var result = Products.findOne({
+                filter: {
+                    where: {id: "1"}
+
+                }
+            });
+
+
+            console.log(result);
+
+
+
             // TODO fix this select
             var query = {};
             if ($stateParams.url != "") {
@@ -41,6 +57,7 @@ MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $htt
                     }
                 };
             }
+
 
             Products.find(query).$promise.then(function (prods) {
                 $rootScope.products = prods;
@@ -54,12 +71,13 @@ MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $htt
                     }).$promise.then(function (cat) {
                             $rootScope.products[index].category_name = cat.name[0];
                         });
+
+
                 });
             });
 
 
         }
-
 
         Metronic.initAjax();
     });

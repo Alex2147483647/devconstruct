@@ -472,6 +472,33 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             }
 
         })
+
+        .state('product_add', {
+            url: "/products/add",
+            templateUrl: "views/add_product_item.html",
+            data: {
+                pageTitle: 'Добавить товар в магазин',
+                pageSubTitle: ''
+            },
+            controller: "AddProductController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+
+                            '/assets/global/plugins/select2/select2.css',
+
+                            '/assets/global/plugins/select2/select2.min.js',
+
+                            'js/controllers/AddProductController.js'
+                        ]
+                    });
+                }]
+            }
+
+        })
 }]);
 
 /* Init global settings and run the app */

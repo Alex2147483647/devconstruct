@@ -2,19 +2,25 @@
  Core script to handle the entire theme and core functions
  **/
 var Metronic = function () {
-    // IE mode
-    var isRTL = false,
-        isIE8 = false,
-        isIE9 = false,
-        isIE10 = false;
 
-    var resizeHandlers = [],
-        assetsPath = '../../assets/',
-        globalImgPath = 'global/img/',
-        globalPluginsPath = 'global/plugins/',
-        globalCssPath = 'global/css/';
+    // IE mode
+    var isRTL = false;
+    var isIE8 = false;
+    var isIE9 = false;
+    var isIE10 = false;
+
+    var resizeHandlers = [];
+
+    var assetsPath = '../../assets/';
+
+    var globalImgPath = 'global/img/';
+
+    var globalPluginsPath = 'global/plugins/';
+
+    var globalCssPath = 'global/css/';
 
     // theme layout color set
+
     var brandColors = {
         'blue': '#89C4F4',
         'red': '#F3565D',
@@ -26,6 +32,7 @@ var Metronic = function () {
 
     // initializes main settings
     var handleInit = function () {
+
         if ($('body').css('direction') === 'rtl') {
             isRTL = true;
         }
@@ -82,109 +89,111 @@ var Metronic = function () {
     };
 
     // Handles portlet tools & actions
-    //var handlePortletTools = function () {
-    //    // handle portlet remove
-    //    //$('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
-    //    //    e.preventDefault();
-    //    //    var portlet = $(this).closest(".portlet");
-    //    //
-    //    //    if ($('body').hasClass('page-portlet-fullscreen')) {
-    //    //        $('body').removeClass('page-portlet-fullscreen');
-    //    //    }
-    //    //
-    //    //    portlet.find('.portlet-title .fullscreen').tooltip('destroy');
-    //    //    portlet.find('.portlet-title > .tools > .reload').tooltip('destroy');
-    //    //    portlet.find('.portlet-title > .tools > .remove').tooltip('destroy');
-    //    //    portlet.find('.portlet-title > .tools > .config').tooltip('destroy');
-    //    //    portlet.find('.portlet-title > .tools > .collapse, .portlet > .portlet-title > .tools > .expand').tooltip('destroy');
-    //    //    portlet.remove();
-    //    //});
-    //
-    //    // handle portlet fullscreen
-    //    //$('body').on('click', '.portlet > .portlet-title .fullscreen', function (e) {
-    //    //    e.preventDefault();
-    //    //    var portlet = $(this).closest(".portlet");
-    //    //    if (portlet.hasClass('portlet-fullscreen')) {
-    //    //        $(this).removeClass('on');
-    //    //        portlet.removeClass('portlet-fullscreen');
-    //    //        $('body').removeClass('page-portlet-fullscreen');
-    //    //        portlet.children('.portlet-body').css('height', 'auto');
-    //    //    } else {
-    //    //        var height = Metronic.getViewPort().height -
-    //    //            portlet.children('.portlet-title').outerHeight() -
-    //    //            parseInt(portlet.children('.portlet-body').css('padding-top')) -
-    //    //            parseInt(portlet.children('.portlet-body').css('padding-bottom'));
-    //    //        $(this).addClass('on');
-    //    //        portlet.addClass('portlet-fullscreen');
-    //    //        $('body').addClass('page-portlet-fullscreen');
-    //    //        portlet.children('.portlet-body').css('height', height);
-    //    //    }
-    //    //});
-    //
-    //    //$('body').on('click', '.portlet > .portlet-title > .tools > a.reload', function (e) {
-    //    //    e.preventDefault();
-    //    //    var el = $(this).closest(".portlet").children(".portlet-body");
-    //    //    var url = $(this).attr("data-url");
-    //    //    var error = $(this).attr("data-error-display");
-    //    //    if (url) {
-    //    //        Metronic.blockUI({
-    //    //            target: el,
-    //    //            animate: true,
-    //    //            overlayColor: 'none'
-    //    //        });
-    //    //        $.ajax({
-    //    //            type: "GET",
-    //    //            cache: false,
-    //    //            url: url,
-    //    //            dataType: "html",
-    //    //            success: function (res) {
-    //    //                Metronic.unblockUI(el);
-    //    //                el.html(res);
-    //    //            },
-    //    //            error: function (xhr, ajaxOptions, thrownError) {
-    //    //                Metronic.unblockUI(el);
-    //    //                var msg = 'Error on reloading the content. Please check your connection and try again.';
-    //    //                if (error == "toastr" && toastr) {
-    //    //                    toastr.error(msg);
-    //    //                } else if (error == "notific8" && $.notific8) {
-    //    //                    $.notific8('zindex', 11500);
-    //    //                    $.notific8(msg, {
-    //    //                        theme: 'ruby',
-    //    //                        life: 3000
-    //    //                    });
-    //    //                } else {
-    //    //                    alert(msg);
-    //    //                }
-    //    //            }
-    //    //        });
-    //    //    } else {
-    //    //        // for demo purpose
-    //    //        Metronic.blockUI({
-    //    //            target: el,
-    //    //            animate: true,
-    //    //            overlayColor: 'none'
-    //    //        });
-    //    //        window.setTimeout(function () {
-    //    //            Metronic.unblockUI(el);
-    //    //        }, 1000);
-    //    //    }
-    //    //});
-    //
-    //    // load ajax data on page init
-    //    //$('.portlet .portlet-title a.reload[data-load="true"]').click();
-    //
-    //    //$('body').on('click', '.portlet > .portlet-title > .tools > .collapse, .portlet .portlet-title > .tools > .expand', function (e) {
-    //    //    e.preventDefault();
-    //    //    var el = $(this).closest(".portlet").children(".portlet-body");
-    //    //    if ($(this).hasClass("collapse")) {
-    //    //        $(this).removeClass("collapse").addClass("expand");
-    //    //        el.slideUp(200);
-    //    //    } else {
-    //    //        $(this).removeClass("expand").addClass("collapse");
-    //    //        el.slideDown(200);
-    //    //    }
-    //    //});
-    //};
+    var handlePortletTools = function () {
+        // handle portlet remove
+        $('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
+            e.preventDefault();
+            var portlet = $(this).closest(".portlet");
+
+            if ($('body').hasClass('page-portlet-fullscreen')) {
+                $('body').removeClass('page-portlet-fullscreen');
+            }
+
+            portlet.find('.portlet-title .fullscreen').tooltip('destroy');
+            portlet.find('.portlet-title > .tools > .reload').tooltip('destroy');
+            portlet.find('.portlet-title > .tools > .remove').tooltip('destroy');
+            portlet.find('.portlet-title > .tools > .config').tooltip('destroy');
+            portlet.find('.portlet-title > .tools > .collapse, .portlet > .portlet-title > .tools > .expand').tooltip('destroy');
+
+            portlet.remove();
+        });
+
+        // handle portlet fullscreen
+        $('body').on('click', '.portlet > .portlet-title .fullscreen', function (e) {
+            e.preventDefault();
+            var portlet = $(this).closest(".portlet");
+            if (portlet.hasClass('portlet-fullscreen')) {
+                $(this).removeClass('on');
+                portlet.removeClass('portlet-fullscreen');
+                $('body').removeClass('page-portlet-fullscreen');
+                portlet.children('.portlet-body').css('height', 'auto');
+            } else {
+                var height = Metronic.getViewPort().height -
+                    portlet.children('.portlet-title').outerHeight() -
+                    parseInt(portlet.children('.portlet-body').css('padding-top')) -
+                    parseInt(portlet.children('.portlet-body').css('padding-bottom'));
+
+                $(this).addClass('on');
+                portlet.addClass('portlet-fullscreen');
+                $('body').addClass('page-portlet-fullscreen');
+                portlet.children('.portlet-body').css('height', height);
+            }
+        });
+
+        $('body').on('click', '.portlet > .portlet-title > .tools > a.reload', function (e) {
+            e.preventDefault();
+            var el = $(this).closest(".portlet").children(".portlet-body");
+            var url = $(this).attr("data-url");
+            var error = $(this).attr("data-error-display");
+            if (url) {
+                Metronic.blockUI({
+                    target: el,
+                    animate: true,
+                    overlayColor: 'none'
+                });
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: url,
+                    dataType: "html",
+                    success: function (res) {
+                        Metronic.unblockUI(el);
+                        el.html(res);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        Metronic.unblockUI(el);
+                        var msg = 'Error on reloading the content. Please check your connection and try again.';
+                        if (error == "toastr" && toastr) {
+                            toastr.error(msg);
+                        } else if (error == "notific8" && $.notific8) {
+                            $.notific8('zindex', 11500);
+                            $.notific8(msg, {
+                                theme: 'ruby',
+                                life: 3000
+                            });
+                        } else {
+                            alert(msg);
+                        }
+                    }
+                });
+            } else {
+                // for demo purpose
+                Metronic.blockUI({
+                    target: el,
+                    animate: true,
+                    overlayColor: 'none'
+                });
+                window.setTimeout(function () {
+                    Metronic.unblockUI(el);
+                }, 1000);
+            }
+        });
+
+        // load ajax data on page init
+        $('.portlet .portlet-title a.reload[data-load="true"]').click();
+
+        $('body').on('click', '.portlet > .portlet-title > .tools > .collapse, .portlet .portlet-title > .tools > .expand', function (e) {
+            e.preventDefault();
+            var el = $(this).closest(".portlet").children(".portlet-body");
+            if ($(this).hasClass("collapse")) {
+                $(this).removeClass("collapse").addClass("expand");
+                el.slideUp(200);
+            } else {
+                $(this).removeClass("expand").addClass("collapse");
+                el.slideDown(200);
+            }
+        });
+    };
 
     // Handles custom checkboxes & radios using jQuery Uniform plugin
     var handleUniform = function () {
@@ -203,100 +212,101 @@ var Metronic = function () {
     };
 
     // Handlesmaterial design checkboxes
-    //var handleMaterialDesign = function () {
-    //    // Material design ckeckbox and radio effects
-    //    $('body').on('click', '.md-checkbox > label, .md-radio > label', function () {
-    //        var the = $(this);
-    //        // find the first span which is our circle/bubble
-    //        var el = $(this).children('span:first-child');
-    //
-    //        // add the bubble class (we do this so it doesnt show on page load)
-    //        el.addClass('inc');
-    //
-    //        // clone it
-    //        var newone = el.clone(true);
-    //
-    //        // add the cloned version before our original
-    //        el.before(newone);
-    //
-    //        // remove the original so that it is ready to run on next click
-    //        $("." + el.attr("class") + ":last", the).remove();
-    //    });
-    //
-    //    if ($('body').hasClass('page-md')) {
-    //        // Material design click effect
-    //        // credit where credit's due; http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design
-    //        $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function (e) {
-    //            var element, circle, d, x, y;
-    //
-    //            element = $(this);
-    //
-    //            if (element.find(".md-click-circle").length == 0) {
-    //                element.prepend("<span class='md-click-circle'></span>");
-    //            }
-    //
-    //            circle = element.find(".md-click-circle");
-    //            circle.removeClass("md-click-animate");
-    //
-    //            if (!circle.height() && !circle.width()) {
-    //                d = Math.max(element.outerWidth(), element.outerHeight());
-    //                circle.css({
-    //                    height: d,
-    //                    width: d
-    //                });
-    //            }
-    //
-    //            x = e.pageX - element.offset().left - circle.width() / 2;
-    //            y = e.pageY - element.offset().top - circle.height() / 2;
-    //
-    //            circle.css({
-    //                top: y + 'px',
-    //                left: x + 'px'
-    //            }).addClass("md-click-animate");
-    //        });
-    //    }
-    //
-    //    // Floating labels
-    //    var handleInput = function (el) {
-    //        if (el.val() != "") {
-    //            el.addClass('edited');
-    //        } else {
-    //            el.removeClass('edited');
-    //        }
-    //    }
-    //
-    //    $('body').on('keydown', '.form-md-floating-label > .form-control', function (e) {
-    //        handleInput($(this));
-    //    });
-    //    $('body').on('blur', '.form-md-floating-label > .form-control', function (e) {
-    //        handleInput($(this));
-    //    });
-    //}
+    var handleMaterialDesign = function () {
+
+        // Material design ckeckbox and radio effects
+        $('body').on('click', '.md-checkbox > label, .md-radio > label', function () {
+            var the = $(this);
+            // find the first span which is our circle/bubble
+            var el = $(this).children('span:first-child');
+
+            // add the bubble class (we do this so it doesnt show on page load)
+            el.addClass('inc');
+
+            // clone it
+            var newone = el.clone(true);
+
+            // add the cloned version before our original
+            el.before(newone);
+
+            // remove the original so that it is ready to run on next click
+            $("." + el.attr("class") + ":last", the).remove();
+        });
+
+        if ($('body').hasClass('page-md')) {
+            // Material design click effect
+            // credit where credit's due; http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design       
+            $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function (e) {
+                var element, circle, d, x, y;
+
+                element = $(this);
+
+                if (element.find(".md-click-circle").length == 0) {
+                    element.prepend("<span class='md-click-circle'></span>");
+                }
+
+                circle = element.find(".md-click-circle");
+                circle.removeClass("md-click-animate");
+
+                if (!circle.height() && !circle.width()) {
+                    d = Math.max(element.outerWidth(), element.outerHeight());
+                    circle.css({
+                        height: d,
+                        width: d
+                    });
+                }
+
+                x = e.pageX - element.offset().left - circle.width() / 2;
+                y = e.pageY - element.offset().top - circle.height() / 2;
+
+                circle.css({
+                    top: y + 'px',
+                    left: x + 'px'
+                }).addClass("md-click-animate");
+            });
+        }
+
+        // Floating labels
+        var handleInput = function (el) {
+            if (el.val() != "") {
+                el.addClass('edited');
+            } else {
+                el.removeClass('edited');
+            }
+        }
+
+        $('body').on('keydown', '.form-md-floating-label > .form-control', function (e) {
+            handleInput($(this));
+        });
+        $('body').on('blur', '.form-md-floating-label > .form-control', function (e) {
+            handleInput($(this));
+        });
+    }
 
     // Handles custom checkboxes & radios using jQuery iCheck plugin
-    //var handleiCheck = function () {
-    //    if (!$().iCheck) {
-    //        return;
-    //    }
-    //
-    //    $('.icheck').each(function () {
-    //        var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
-    //        var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
-    //
-    //        if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
-    //            $(this).iCheck({
-    //                checkboxClass: checkboxClass,
-    //                radioClass: radioClass,
-    //                insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
-    //            });
-    //        } else {
-    //            $(this).iCheck({
-    //                checkboxClass: checkboxClass,
-    //                radioClass: radioClass
-    //            });
-    //        }
-    //    });
-    //};
+    var handleiCheck = function () {
+        if (!$().iCheck) {
+            return;
+        }
+
+        $('.icheck').each(function () {
+            var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+            var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
+
+            if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass,
+                    insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+                });
+            } else {
+                $(this).iCheck({
+                    checkboxClass: checkboxClass,
+                    radioClass: radioClass
+                });
+            }
+        });
+    };
 
     // Handles Bootstrap switches
     var handleBootstrapSwitch = function () {
@@ -307,23 +317,23 @@ var Metronic = function () {
     };
 
     // Handles Bootstrap confirmations
-    //var handleBootstrapConfirmation = function () {
-    //    if (!$().confirmation) {
-    //        return;
-    //    }
-    //    $('[data-toggle=confirmation]').confirmation({
-    //        container: 'body',
-    //        btnOkClass: 'btn-xs btn-success',
-    //        btnCancelClass: 'btn-xs btn-danger'
-    //    });
-    //}
+    var handleBootstrapConfirmation = function () {
+        if (!$().confirmation) {
+            return;
+        }
+        $('[data-toggle=confirmation]').confirmation({
+            container: 'body',
+            btnOkClass: 'btn-xs btn-success',
+            btnCancelClass: 'btn-xs btn-danger'
+        });
+    }
 
     // Handles Bootstrap Accordions.
-    //var handleAccordions = function () {
-    //    $('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
-    //        Metronic.scrollTo($(e.target));
-    //    });
-    //};
+    var handleAccordions = function () {
+        $('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
+            Metronic.scrollTo($(e.target));
+        });
+    };
 
     // Handles Bootstrap Tabs.
     var handleTabs = function () {

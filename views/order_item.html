@@ -1,87 +1,216 @@
+<style>
+    .o-proposal-text {
+        padding: 15px;
+        background: #EEE none repeat scroll 0% 0%;
+        margin-top: 15px;
+        position: relative;
+        border-radius: 3px;
+        color: #333;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .o-proposal-text::before {
+        position: absolute;
+        top: -9px;
+        left: 20px;
+        width: 0px;
+        height: 0px;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 9px solid #EEE;
+        content: "";
+    }
+</style>
+
 <ul class="page-breadcrumb breadcrumb">
-	<li>
-		<a href="#">Home</a><i class="fa fa-circle"></i>
-	</li>
-	<li>
-		<a href="/#/freelance.html">Услуги</a>
-		<i class="fa fa-circle"></i>
-	</li>
-	<li class="active">
-		Заказ
-	</li>
+    <li>
+        <a href="#">Home</a><i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="/#/freelance.html">Услуги</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        Заказ
+    </li>
 </ul>
 
 
 <div class="portlet light" ng-model="$scope.single_order" ng-controller="OrderItemController">
-	<div class="portlet-body">
+    <div class="portlet-body">
 
-		<div class="row">
-			<div class="col-md-8 blog-page" ng-repeat="order in single_order">
-
-
-				<h4 class="bold">{{order.title[0]}}</h4>
-
-				<p class="price_output" style="float: right;position: relative;bottom: 30px;right: 25px;">
-					<i class="fa fa-money"></i>&nbsp;<span class="ng-binding">{{order.price}}{{order.currency}}</span>
-				</p>
-
-				<article style="margin-top: 25px">
-					{{order.description[0]}}
-				</article>
-				<hr/>
-
-				<ul class="l-item-features nopadding">
-					<li>
-						<i class="fa fa-map-marker"></i>{{order.city}}
-					</li>
-					<li ng-model="$scope.locatisation">
-						<i class="fa fa-briefcase"></i>
-						<span ng-if="order.type == 1">Разовый заказ</span>
-						<span ng-if="order.type == 2">Постоянная работа</span>
-						<span ng-if="order.type == 3">Конкурсы</span>
-					</li>
-					<li>
-						<i class="fa fa-clock-o"></i>{{ order.date_create | date:'dd.MM.yyyy'}}
-					</li>
-
-				</ul>
-				<br/><br/>
+        <div class="row">
+            <div class="col-md-8 blog-page" ng-repeat="order in single_order">
 
 
-				<a onclick="alert('Простое добавление предложения')" href class="btn" id="j-collapse-add" data-toggle="collapse" data-parent="#accordion" style="width: 100%;font-size: 18px;"><span style="border-bottom: 1px dashed;">Опубликовать своё предложение</span></a>
+                <h4 class="bold">{{order.title[0]}}</h4>
 
-				<br/><br/>
+                <p class="price_output" style="float: right;position: relative;bottom: 30px;right: 25px;">
+                    <i class="fa fa-money"></i>&nbsp;<span class="ng-binding">{{order.price}}{{order.currency}}</span>
+                </p>
 
-				<h4 class="bold o-propositions-title">
-					<i class="fa fa-comments-o"></i> Предложения от исполнителей <span style="background-color: #4db3a4;
-    color: #fff;    padding: 2px 10px;" class="circle bold o-count-proposals">0</span>
-				</h4>
+                <article style="margin-top: 25px">
+                    {{order.description[0]}}
+                </article>
+                <hr/>
 
+                <ul class="l-item-features nopadding">
+                    <li>
+                        <i class="fa fa-map-marker"></i>{{order.city}}
+                    </li>
+                    <li ng-model="$scope.locatisation">
+                        <i class="fa fa-briefcase"></i>
+                        <span ng-if="order.type == 1">Разовый заказ</span>
+                        <span ng-if="order.type == 2">Постоянная работа</span>
+                        <span ng-if="order.type == 3">Конкурсы</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-clock-o"></i>{{ order.date_create | date:'dd.MM.yyyy'}}
+                    </li>
 
-			</div>
-			<div class="col-md-4 blog-page" style="border-left: 2px solid #4db3a4">
-
-
-				<h4 class="bold">Заказчик</h4>
-
-				<p>
-					<i class="fa fa-user" style="color: #CACACA;"></i>
-					<a href="/#/profile.html">Василий Петрович</a><span style="float:right"><a href="/"><i class="fa fa-comments-o"></i> Отзывы:
-					<span style="color: #09A209;">+3</span> /
-					<span style="color: #FF0000;">-1</span></a></span>
-				</p>
-
-				<p>
-					<i style="color: #CACACA;position: relative;right: 1px;font-size: 13px;bottom: 1px;" class="fa fa-envelope"></i> vasily@mail.ru
-				</p>
-
-				<p>
-					<i class="fa fa-phone" style="color: #CACACA;font-size: 18px; position: relative; top: 2px;"></i> +38 (096) 785-85-45
-				</p>
+                </ul>
+                <br/><br/>
 
 
-			</div>
-		</div>
-	</div>
+                <a href class="btn" id="j-collapse-add" data-toggle="collapse" data-target="#feedb" style="width: 100%;font-size: 18px;"><span style="border-bottom: 1px dashed;">Опубликовать своё предложение</span></a>
+                <br/><br/>
+
+                <div class="row form-horizontal collapse" id="feedb">
+
+                    <div class="form-group">
+                        <label class="col col-sm-3 control-label">Цена</label>
+
+                        <div class="col col-sm-2 nopadding">
+                            <input type="text" placeholder="от" class="form-control"/>
+                        </div>
+                        <div class="col col-sm-2 nopadding">
+                            <input type="text" placeholder="до" class="form-control"/>
+                        </div>
+                        <div class="col col-sm-2 nopadding">
+                            <select class="form-control">
+                                <option value="грн">
+                                    грн
+                                </option>
+                                <option value="руб">
+                                    руб
+                                </option>
+                                <option value="$">
+                                    $
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col col-sm-3 control-label">Сроки</label>
+
+                        <div class="col col-sm-2 nopadding">
+                            <input type="text" placeholder="от" class="form-control"/>
+                        </div>
+                        <div class="col col-sm-2 nopadding">
+                            <input type="text" placeholder="до" class="form-control"/>
+                        </div>
+                        <div class="col col-sm-2 nopadding">
+                            <select class="form-control">
+                                <option value="1">часа</option>
+                                <option value="2">дня</option>
+                                <option value="3">недель</option>
+                                <option value="4">месяцев</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col col-sm-3 control-label">Описание:</label>
+
+                        <div class="col col-sm-8 nopadding">
+                            <textarea class="form-control" id="comment31"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-3 nopadding">
+                            <button class="btn btn-primary">Опубликовать предложение</button>
+                            <button data-toggle="collapse" data-target="#feedb" class="btn btn-link">Отмена</button>
+                        </div>
+                    </div>
+
+                </div>
+                <br/><br/>
+
+                <h4 class="bold o-propositions-title">
+                    <i class="fa fa-comments-o"></i> Предложения от исполнителей <span style="background-color: #4db3a4;
+    color: #fff;    padding: 2px 10px;" class="circle bold o-count-proposals">1</span>
+                </h4>
+
+                <div>
+                    <article class="row" style="margin-top: 40px;overflow: hidden;">
+                        <div class="col-sm-2" style="text-align:right;padding-top: 4px;">
+                            <img src="/assets/admin/layout3/img/avatar9.jpg" style="width: 70px; border-radius: 50%;">
+                        </div>
+
+                        <div class="col-sm-10" style="font-size: 13px;color: #686868;">
+                            <a href="">Василий Петрович</a><br/>
+                            <span>Специализация: </span><a href="">Веб-сайты</a><br/>
+                            <span>Отзывы работодателей: </span><a href="/"><span style="color: #09A209;">+3</span> /<span style="color: #FF0000;">-1</span></a><br/>
+                            <span> Добавлено 12.09.2015 в 20:29</span><span><i style="margin-left: 15px" class="fa fa-map-marker"></i> Киев, Украина</span><br/>
+
+                            <div class="o-proposal-text">
+                                <div class="o-proposed-terms">
+                                    <strong style="color: rgb(243, 106, 90);">500 - 600 грн.</strong>
+                                </div>
+                                сделаю на wordpress
+                            </div>
+                            <table class="table table-condensed">
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: 0">Телефон:</td>
+                                    <td style="border-top: 0">380687467208</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>
+                                        <a href="mailto:depressive.giraffe@gmail.com" rel="nofollow">depressive.giraffe@gmail.com</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Skype:</td>
+                                    <td>r.pavliuk</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr style="float: right;" class="col-sm-11"/>
+                    </article>
+                </div>
+
+
+            </div>
+            <div class="col-md-4 blog-page" style="border-left: 2px solid #4db3a4">
+
+
+                <h4 class="bold">Заказчик</h4>
+
+                <p>
+                    <i class="fa fa-user" style="color: #CACACA;"></i>
+                    <a href="/#/profile.html">Василий Петрович</a><span style="float:right"><a href="/"><i class="fa fa-comments-o"></i> Отзывы:
+                    <span style="color: #09A209;">+3</span> /
+                    <span style="color: #FF0000;">-1</span></a></span>
+                </p>
+
+                <p>
+                    <i style="color: #CACACA;position: relative;right: 1px;font-size: 13px;bottom: 1px;" class="fa fa-envelope"></i> vasily@mail.ru
+                </p>
+
+                <p>
+                    <i class="fa fa-phone" style="color: #CACACA;font-size: 18px; position: relative; top: 2px;"></i> +38 (096) 785-85-45
+                </p>
+
+
+            </div>
+        </div>
+    </div>
 
 </div>

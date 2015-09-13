@@ -580,9 +580,7 @@
 					<a href="#/">Главная</a>
 				</li>
 				<li class="menu-dropdown mega-menu-dropdown mega-menu-full">
-					<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="#/store/" class="dropdown-toggle"> Разработчик
-						<i class="fa fa-angle-down"></i>
-					</a>
+					<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="#/store/" class="dropdown-toggle">Разработчик<i class="fa fa-angle-down"></i></a>
 					<ul class="dropdown-menu">
 						<li>
 							<div class="mega-menu-content">
@@ -590,7 +588,6 @@
 									<div class="col-md-12">
 										<ul ng-model="$scope.categories_developer" class="mega-menu nopadding">
 											<li class="col-sm-4" ng-repeat="category in categories_developer" style="list-style-type:none">
-
 												<a href="#/store/{{category.category_id}}" name="category[]" data-value="{{category.category_id}}" class="check-parent"><i class="fa fa-angle-right"></i><span>{{ category.name[0]}}</span></a>
 											</li>
 										</ul>

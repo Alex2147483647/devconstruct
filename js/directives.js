@@ -3,7 +3,7 @@
  ***/
 
 // Route State Load Spinner(used on page or content load)
-MetronicApp.directive('ngSpinnerBar', ['$rootScope',
+devConstruct.directive('ngSpinnerBar', ['$rootScope',
     function ($rootScope) {
         return {
             link: function (scope, element, attrs) {
@@ -40,24 +40,23 @@ MetronicApp.directive('ngSpinnerBar', ['$rootScope',
             }
         };
     }
-])
+]);
 
 // Handle global LINK click
-MetronicApp.directive('a',
-    function () {
-        return {
-            restrict: 'E',
-            link: function (scope, elem, attrs) {
-                if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
-                    elem.on('click', function (e) {
-                        e.preventDefault(); // prevent link click for above criteria
-                    });
-                }
+devConstruct.directive('a', function () {
+    return {
+        restrict: 'E',
+        link: function (scope, elem, attrs) {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                elem.on('click', function (e) {
+                    e.preventDefault(); // prevent link click for above criteria
+                });
             }
-        };
-    });
+        }
+    };
+});
 
-MetronicApp.directive('onFinishRender', function ($timeout) {
+devConstruct.directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -71,7 +70,7 @@ MetronicApp.directive('onFinishRender', function ($timeout) {
 });
 
 // Handle Dropdown Hover Plugin Integration
-MetronicApp.directive('dropdownMenuHover', function () {
+devConstruct.directive('dropdownMenuHover', function () {
     return {
         link: function (scope, elem) {
             elem.dropdownHover();

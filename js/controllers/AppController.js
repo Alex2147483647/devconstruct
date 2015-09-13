@@ -1,6 +1,6 @@
 'use strict';
 
-MetronicApp.controller('AppController', function ($rootScope, $scope, $http, $timeout, $stateParams, Users) {
+devConstruct.controller('AppController', function ($rootScope, $scope, $http, $timeout, $stateParams, Users) {
     $scope.$on('$viewContentLoaded', function () {
         console.log(Users.isAuthenticated());
 

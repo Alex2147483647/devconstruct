@@ -70,6 +70,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
 
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/home/");
+
     $stateProvider
         // Home
         .state('home', {
@@ -93,7 +94,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                             '/assets/global/plugins/jquery.sparkline.min.js',
                             '/assets/admin/pages/scripts/index3.js',
                             '/assets/admin/pages/scripts/tasks.js',
-                            'js/controllers/HomeController.js'
+                            '/js/controllers/HomeController.js'
                         ]
                     });
                 }]

@@ -1,6 +1,6 @@
 'use strict';
 
-MetronicApp.controller('TodoController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders, Countries) {
+devConstruct.controller('TodoController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders, Countries) {
 
 
     $scope.addorder = function () {

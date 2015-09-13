@@ -1,4 +1,4 @@
-MetronicApp.controller('StoreItemController', function ($rootScope, $scope, $http, $timeout, $stateParams, Products, Categories_developers, Users) {
+devConstruct.controller('StoreItemController', function ($rootScope, $scope, $http, $timeout, $stateParams, Products, Categories_developers, Users) {
 
     $scope.$on('ngRepeatFinished', function (ev) {
         if ($stateParams.url > 0) {

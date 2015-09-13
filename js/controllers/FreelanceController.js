@@ -1,6 +1,6 @@
 'use strict';
 
-MetronicApp.controller('FreelanceController', function ($rootScope, $scope, $http, $timeout) {
+devConstruct.controller('FreelanceController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         Metronic.initAjax(); // initialize core components        
     });

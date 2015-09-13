@@ -1,4 +1,4 @@
-MetronicApp.controller('AddProductController', function ($rootScope, $scope, $http, $timeout, Products) {
+devConstruct.controller('AddProductController', function ($rootScope, $scope, $http, $timeout, Products) {
     $scope.$on('$viewContentLoaded', function () {
 
 

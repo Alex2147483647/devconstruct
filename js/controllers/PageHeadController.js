@@ -1,4 +1,4 @@
-MetronicApp.controller('PageHeadController', function ($rootScope, $scope, $http, $timeout) {
+devConstruct.controller('PageHeadController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         //console.log($('.form-create-category'));
         //

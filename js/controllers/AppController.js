@@ -2,6 +2,7 @@
 
 devConstruct.controller('AppController', function ($rootScope, $scope, $http, $timeout, $stateParams, Users) {
     $scope.$on('$viewContentLoaded', function () {
+        console.log('AppController');
         //console.log(Users.isAuthenticated());
         //
         //$('#register-button').on('click', function () {

@@ -338,7 +338,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('store.cart', {
-            url: "/store/cart",
+            url: "/cart",
             templateUrl: "views/cart.html",
             data: {
                 pageTitle: 'Корзина ',

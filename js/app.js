@@ -27,7 +27,6 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     };
 
     $rootScope.settings = settings;
-
     return settings;
 }]);
 

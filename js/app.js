@@ -54,7 +54,6 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
 
 /* Setup Rounting For All Pages */
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-
     // Redirect any unmatched url (404)
     $urlRouterProvider.otherwise("/");
 
@@ -87,7 +86,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('blog', {
-            url: "/blog.html",
+            url: "/blog",
             templateUrl: "views/blog.html",
             data: {
                 pageTitle: 'Блог',
@@ -168,7 +167,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('news', {
-            url: "/news.html",
+            url: "/news",
             templateUrl: "views/news.html",
             data: {
                 pageTitle: 'Новости',
@@ -190,7 +189,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
 
         })
         .state('help', {
-            url: "/help.html",
+            url: "/help",
             templateUrl: "views/help.html",
             data: {
                 pageTitle: 'Помощь',
@@ -296,6 +295,30 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
+        .state('store.category', {
+            url: "/:category_id",
+            templateUrl: "views/store.html",
+            data: {
+                pageTitle: 'Магазин',
+                pageSubTitle: ''
+            },
+            controller: "StoreController",
+            resolve: {
+                category_id: ['$stateParams', function ($stateParams) {
+                    return $stateParams.category_id;
+                }],
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            '/js/controllers/StoreController.js',
+                            '/assets/admin/pages/css/freelance.css'
+                        ]
+                    });
+                }]
+            }
+        })
         //.state('store.product', {
         //    url: "/:catid/:productid",
         //    templateUrl: "views/product.html",
@@ -319,27 +342,27 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
         //        }]
         //    }
         //})
-        .state('storecart', {
-            url: "/cart",
-            templateUrl: "views/cart.html",
-            data: {
-                pageTitle: 'Корзина ',
-                pageSubTitle: ''
-            },
-            controller: "CartController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/CartController.js',
-                            '/assets/admin/pages/css/freelance.css'
-                        ]
-                    });
-                }]
-            }
-        });
+    //.state('storecart', {
+    //    url: "/cart",
+    //    templateUrl: "views/cart.html",
+    //    data: {
+    //        pageTitle: 'Корзина ',
+    //        pageSubTitle: ''
+    //    },
+    //    controller: "CartController",
+    //    resolve: {
+    //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+    //            return $ocLazyLoad.load({
+    //                name: 'devConstruct',
+    //                insertBefore: '#ng_load_plugins_before',
+    //                files: [
+    //                    '/js/controllers/CartController.js',
+    //                    '/assets/admin/pages/css/freelance.css'
+    //                ]
+    //            });
+    //        }]
+    //    }
+    //});
     //.state('add_edit_product', {
     //    url: "/add_edit_product/:productid",
     //    templateUrl: "views/add_product_item.html",

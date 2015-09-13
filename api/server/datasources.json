@@ -1,15 +1,20 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
   "mysql": {
     "host": "localhost",
     "port": 3306,
-    "database": "devconstruct",
+    "database": "devconstruct.local",
+    "password": "",
     "name": "mysql",
-    "user": "devuser",
-    "password": "65536",
+    "user": "root",
     "connector": "mysql"
+  },
+  "mongoDB": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "devconstruct",
+    "password": "65536",
+    "name": "mongoDB",
+    "connector": "mongodb",
+    "user": "devconstructAdmin"
   }
 }

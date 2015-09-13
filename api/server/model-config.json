@@ -14,59 +14,59 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongoDB",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongoDB",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongoDB",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongoDB",
     "public": false
   },
   "categories": {
-    "dataSource": "mysql",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
-  },
-  "language": {
-    "dataSource": "mysql",
+    "dataSource": "mongoDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "orders": {
-    "dataSource": "mysql",
+    "dataSource": "mongoDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "users": {
-    "dataSource": "mysql",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
-  },
-  "categories_developers": {
-    "dataSource": "mysql",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
-  },
-  "products": {
-    "dataSource": "mysql",
+    "dataSource": "mongoDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "countries": {
-    "dataSource": "mysql",
+    "dataSource": "mongoDB",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "l10n": {
+    "dataSource": "mongoDB",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "products": {
+    "dataSource": "mongoDB",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "languages": {
+    "dataSource": "mongoDB",
     "public": true,
     "$promise": {},
     "$resolved": true

@@ -2388,3 +2388,55 @@ Page Loading
     font-size: 12px;
 }
 
+.f-freelancer-name label {
+    padding: 1px 6px 2px 6px;
+}
+
+.inc-drop label {
+    width: 100%
+}
+
+.o-freelancer-info {
+    width: calc(100% - 45px);
+    float: right;
+    font-size: 13px;
+    color: #757575;
+    position: relative;
+    bottom: 8px;
+}
+
+.o-good {
+    color: #09A209;
+}
+
+.o-bad {
+    color: #FF0000;
+}
+
+.pro {
+    background-color: #f36a5a;
+}
+
+.bottom-container a i {
+    font-size: 16px;
+}
+
+.bottom-container {
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 0px 0px 6px 6px;
+    border-top: 0;
+
+    overflow: hidden;
+}
+
+.bottom-container a {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #E5E5E5;
+    padding: 2px 0px;
+}
+
+.bottom-container a:nth-child(3) {
+    border-right: 0;
+}

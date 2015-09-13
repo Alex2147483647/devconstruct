@@ -94,7 +94,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('freelance', {
-            url: "/freelance/:catid",
+            url: "/freelance",
             templateUrl: "views/freelance.html",
             data: {
                 pageTitle: 'Услуги',
@@ -102,9 +102,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             },
             controller: "FreelanceController",
             resolve: {
-                catid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.catid;
-                }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'devConstruct',
@@ -117,31 +114,8 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        .state('freelance.order', {
-            url: "/:catid/:orderid",
-            templateUrl: "views/order_item.html",
-            data: {
-                pageTitle: 'Заказ ',
-                pageSubTitle: 'Спецификация проекта'
-            },
-            controller: "OrderItemController",
-            resolve: {
-                orderid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.orderid;
-                }],
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/OrderItemController.js'
-                        ]
-                    });
-                }]
-            }
-        })
-        .state('freelance.neworder', {
-            url: "/add_edit_order/:orderid",
+        .state('freelance.add_edit', {
+            url: "/add-edit/{order_url}",
             templateUrl: "views/add_order_item.html",
             data: {
                 pageTitle: 'Добавить заказ',
@@ -149,8 +123,8 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             },
             controller: "FreelanceAddEditController",
             resolve: {
-                orderid: ['$stateParams', function ($stateParams) {
-                    return $stateParams.orderid;
+                order_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.order_url;
                 }],
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -164,6 +138,37 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
+        .state('freelance.category', {
+            url: "/{category_url}",
+            resolve: {
+                category_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.category_url;
+                }]
+            }
+        })
+        .state('freelance.order', {
+            url: "/{category_url}/{order_url}",
+            templateUrl: "views/order_item.html",
+            data: {
+                pageTitle: 'Заказ ',
+                pageSubTitle: 'Спецификация проекта'
+            },
+            controller: "OrderItemController",
+            resolve: {
+                order_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.order_url;
+                }],
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            '/js/controllers/OrderItemController.js'
+                        ]
+                    });
+                }]
+            }
+        })
         .state('news', {
             url: "/news",
             templateUrl: "views/news.html",
@@ -171,7 +176,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageTitle: 'Новости',
                 pageSubTitle: 'Очень крутые новости'
             },
-            controller: "",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -273,7 +277,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             }
         })
         .state('store', {
-            url: "/store/{category_url}",
+            url: "/store",
             templateUrl: "views/store.html",
             data: {
                 pageTitle: 'Магазин',
@@ -293,26 +297,70 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 }]
             }
         })
-        //.state('store.category', {
-        //    url: "/{category_url}",
-        //    data: {
-        //        pageTitle: 'Каталог',
-        //        pageSubTitle: '',
-        //        section: 'category'
-        //    },
-        //    resolve: {
-        //        category_url: ['$stateParams', function ($stateParams) {
-        //            return $stateParams.category_url;
-        //        }]
-        //    }
-        //})
+        .state('store.add_edit', {
+            url: "/add-edit/:product_url",
+            templateUrl: "views/add_product_item.html",
+            data: {
+                pageTitle: 'Добавить товар в магазин',
+                pageSubTitle: ''
+            },
+            controller: "ProductAddEditController",
+            resolve: {
+                product_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.product_url;
+                }],
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            '/assets/global/plugins/select2/select2.css',
+                            '/assets/global/plugins/select2/select2.min.js',
+                            '/js/controllers/ProductAddEditController.js'
+                        ]
+                    });
+                }]
+            }
+
+        })
+        .state('store.cart', {
+            url: "/shopping-cart",
+            templateUrl: "views/cart.html",
+            data: {
+                pageTitle: 'Корзина ',
+                pageSubTitle: ''
+            },
+            controller: "CartController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'devConstruct',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            '/js/controllers/CartController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('store.category', {
+            url: "/{category_url}",
+            data: {
+                pageTitle: 'Каталог',
+                pageSubTitle: ''
+            },
+            resolve: {
+                category_url: ['$stateParams', function ($stateParams) {
+                    return $stateParams.category_url;
+                }]
+            }
+        })
         .state('store.product', {
             url: "/{category_url}/{product_url}",
             templateUrl: "views/product.html",
             data: {
                 pageTitle: 'Товар',
-                pageSubTitle: '',
-                section: 'product'
+                pageSubTitle: ''
             },
             controller: "StoreItemController",
             resolve: {
@@ -329,56 +377,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                     });
                 }]
             }
-        })
-        .state('store.cart', {
-            url: "/cart",
-            templateUrl: "views/cart.html",
-            data: {
-                pageTitle: 'Корзина ',
-                pageSubTitle: '',
-                section: 'cart'
-            },
-            controller: "CartController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'devConstruct',
-                        insertBefore: '#ng_load_plugins_before',
-                        files: [
-                            '/js/controllers/CartController.js'
-                        ]
-                    });
-                }]
-            }
-        })
-    //.state('add_edit_product', {
-    //    url: "/add_edit_product/:productid",
-    //    templateUrl: "views/add_product_item.html",
-    //    data: {
-    //        pageTitle: 'Добавить товар в магазин',
-    //        pageSubTitle: ''
-    //    },
-    //    controller: "ProductAddEditController",
-    //    resolve: {
-    //        productid: ['$stateParams', function ($stateParams) {
-    //            return $stateParams.productid;
-    //        }],
-    //        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-    //            return $ocLazyLoad.load({
-    //                name: 'devConstruct',
-    //                insertBefore: '#ng_load_plugins_before',
-    //                files: [
-    //                    '/assets/global/plugins/select2/select2.css',
-    //                    '/assets/global/plugins/select2/select2.min.js',
-    //                    '/js/controllers/ProductAddEditController.js'
-    //                ]
-    //            });
-    //        }]
-    //    }
-    //
-    //})
-
-    //console.log($stateProvider);
+        });
 }]);
 
 /* Init global settings and run the app */

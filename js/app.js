@@ -69,11 +69,11 @@ devConstruct.controller('FooterController', ['$scope', function ($scope) {
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     // Redirect any unmatched url (404)
-    $urlRouterProvider.otherwise("/home/");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
         .state('home', {
-            url: "/home/",
+            url: "/",
             templateUrl: "views/home.html",
             data: {
                 pageTitle: 'Главная',

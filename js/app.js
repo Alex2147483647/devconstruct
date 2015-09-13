@@ -15,11 +15,6 @@ devConstruct.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     });
 }]);
 
-//AngularJS v1.3.x workaround for old style controller declarition in HTML
-//devConstruct.config(['$controllerProvider', function ($controllerProvider) {
-//    $controllerProvider.allowGlobals();
-//}]);
-
 /* Setup global settings */
 devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     // supported languages
@@ -36,34 +31,26 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
-/* Setup App Main Controller */
-devConstruct.controller('AppController', ['$scope', '$rootScope', function ($scope, $rootScope) {
-    $scope.$on('$viewContentLoaded', function () {
-        //Metronic.initComponents(); // init core components
-        //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive
-    });
-}]);
-
 /* Setup Layout Part - Header */
-devConstruct.controller('HeaderController', ['$scope', function ($scope) {
-    //$scope.$on('$includeContentLoaded', function () {
-    //    //Layout.initHeader($scope); // init header
-    //});
-}]);
+//devConstruct.controller('HeaderController', ['$scope', function ($scope) {
+//    $scope.$on('$includeContentLoaded', function () {
+//    //    //Layout.initHeader($scope); // init header
+//    });
+//}]);
 
 /* Setup Layout Part - Sidebar */
-devConstruct.controller('PageHeadController', ['$scope', function ($scope) {
-    $scope.$on('$includeContentLoaded', function () {
-
-    });
-}]);
+//devConstruct.controller('PageHeadController', ['$scope', function ($scope) {
+//    $scope.$on('$includeContentLoaded', function () {
+//
+//    });
+//}]);
 
 /* Setup Layout Part - Footer */
-devConstruct.controller('FooterController', ['$scope', function ($scope) {
-    $scope.$on('$includeContentLoaded', function () {
-        //Layout.initFooter(); // init footer
-    });
-}]);
+//devConstruct.controller('FooterController', ['$scope', function ($scope) {
+//    $scope.$on('$includeContentLoaded', function () {
+//        //Layout.initFooter(); // init footer
+//    });
+//}]);
 
 /* Setup Rounting For All Pages */
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

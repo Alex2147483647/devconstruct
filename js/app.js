@@ -187,14 +187,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             controller: "",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'devConstruct',
-
-                        files: []
-                    }, {
-                        name: 'devConstruct',
-                        files: []
-                    }]);
+                    return $ocLazyLoad.load();
                 }]
             }
         })

@@ -2,6 +2,6 @@
 
 devConstruct.controller('AppController', function ($rootScope, $scope, $http, $timeout, $stateParams, Categories) {
     $scope.$on('$viewContentLoaded', function () {
-        console.log(Categories.find());
+        //console.log(Categories.find());
     });
 });

@@ -384,6 +384,13 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
         });
 }]);
 
+devConstruct.controller('PageHeadController', ['$scope', function ($scope, Categories) {
+    $scope.$on('$includeContentLoaded', function () {
+
+    });
+    console.log(Categories.find());
+}]);
+
 
 /* Init global settings and run the app */
 devConstruct.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {

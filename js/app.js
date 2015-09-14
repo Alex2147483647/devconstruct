@@ -408,7 +408,7 @@ devConstruct.controller('PageHeadController', ['$scope', function ($scope, Categ
 //}]);
 
 /* Init global settings and run the app */
-devConstruct.run(["$rootScope", "settings", "$http", "$state", 'lbServices', function ($rootScope, settings, $http, $state, lbServices) {
+devConstruct.run(["$rootScope", "settings", "$http", "$state", function ($rootScope, settings, $http, $state) {
     $rootScope.$state = $state;
     $rootScope.$settings = settings;
 

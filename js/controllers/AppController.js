@@ -5,3 +5,5 @@
 //        //console.log(Categories.find());
 //    });
 //});
+
+console.log(AppController);

@@ -1,4 +1,4 @@
-(function (window, angular, undefined) {
+//(function (window, angular, undefined) {
     /*jshint globalstrict:true*/
     /*global angular:false*/
     'use strict';
@@ -24,4 +24,4 @@
             $scope.breadcrumbs = breadcrumbs;
         }
     ]);
-})(window, window.angular);
+//})(window, window.angular);

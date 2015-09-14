@@ -3,7 +3,7 @@
  ***/
 
 // Route State Load Spinner(used on page or content load)
-devConstruct.directive('ngSpinnerBar', ['$rootScope',
+MetronicApp.directive('ngSpinnerBar', ['$rootScope',
     function ($rootScope) {
         return {
             link: function (scope, element, attrs) {
@@ -43,7 +43,7 @@ devConstruct.directive('ngSpinnerBar', ['$rootScope',
 ]);
 
 // Handle global LINK click
-devConstruct.directive('a', function () {
+MetronicApp.directive('a', function () {
     return {
         restrict: 'E',
         link: function (scope, elem, attrs) {
@@ -56,7 +56,7 @@ devConstruct.directive('a', function () {
     };
 });
 
-devConstruct.directive('onFinishRender', function ($timeout) {
+MetronicApp.directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -70,7 +70,7 @@ devConstruct.directive('onFinishRender', function ($timeout) {
 });
 
 // Handle Dropdown Hover Plugin Integration
-devConstruct.directive('dropdownMenuHover', function () {
+MetronicApp.directive('dropdownMenuHover', function () {
     return {
         link: function (scope, elem) {
             elem.dropdownHover();

@@ -1,6 +1,6 @@
 'use strict';
 
-devConstruct.controller('HeaderController', function ($rootScope, $scope, $http, $timeout) {
+MetronicApp.controller('HeaderController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         console.log('HeaderController');
         $rootScope.listCategories = Categories.find({
@@ -12,13 +12,13 @@ devConstruct.controller('HeaderController', function ($rootScope, $scope, $http,
 });
 
 
-devConstruct.controller('PageHeadController', function ($rootScope, $scope, $http, $timeout) {
+MetronicApp.controller('PageHeadController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         console.log('PageHeadController');
     });
 });
 
-devConstruct.controller('FooterController', function ($rootScope, $scope, $http, $timeout) {
+MetronicApp.controller('FooterController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         console.log('FooterController');
     });

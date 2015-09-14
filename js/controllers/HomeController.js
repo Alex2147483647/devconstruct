@@ -4,5 +4,6 @@ devConstruct.controller('HomeController', function ($rootScope, $scope, $http, $
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
         //Metronic.initAjax();
+        console.log();
     });
 });

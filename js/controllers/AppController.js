@@ -7,7 +7,11 @@ devConstruct.controller('AppController', function ($rootScope, $scope, $http, $t
 
     (function ($) {
         $(function () {
-            console.log(Categories.find());
+            console.log(Categories.find({
+                where: {
+                    type: "store"
+                }
+            }));
         });
     })(jQuery, window, angular);
 

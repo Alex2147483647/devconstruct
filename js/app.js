@@ -408,7 +408,7 @@ devConstruct.controller('PageHeadController', ['$scope', function ($scope, Categ
 //}]);
 
 /* Init global settings and run the app */
-devConstruct.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
+devConstruct.run(["$rootScope", "settings", "$http" "$state", function ($rootScope, settings, $http, $state) {
     $rootScope.$state = $state;
 
     //Categories.create( {

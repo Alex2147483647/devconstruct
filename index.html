@@ -19,7 +19,7 @@
 	<link href="/assets/admin/layout3/css/custom.css" rel="stylesheet" type="text/css"/>
 	<link rel="shortcut icon" href="/favicon.ico"/>
 </head>
-<body ng-controller="AppController" class="page-on-load"/>
+<body class="page-on-load"/>
 
 <div ng-spinner-bar class="page-spinner-bar">
 	<div class="bounce1"></div>
@@ -31,7 +31,7 @@
 
 <div class="clearfix"></div>
 
-<div class="page-container">
+<div ng-controller="AppController" class="page-container">
 	<div ng-include="'tpl/page-head.html'" ng-controller="PageHeadController" class="page-head"></div>
 
 	<div class="page-content">

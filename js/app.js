@@ -22,8 +22,8 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
         layout: {
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
-        layoutImgPath: Metronic.getAssetsPath() + 'admin/layout/img/',
-        layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/'
+        //layoutImgPath: Metronic.getAssetsPath() + 'admin/layout/img/',
+        //layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/'
     };
 
     $rootScope.settings = settings;

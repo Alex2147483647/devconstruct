@@ -3,22 +3,22 @@
     /*global angular:false*/
     'use strict';
 
-    angular.module('app', [
-        'ui.router',
+angular.module('appDevConstruct', [
+    'ngRoute',
         "lbServices",
         'services.breadcrumbs'
     ]);
 
-    angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+angular.module('appDevConstruct').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.otherwise({redirectTo: '/404'});
     }]);
 
-    angular.module('app').controller('AppController', function ($scope) {
+angular.module('appDevConstruct').controller('AppController', function ($scope) {
 
     });
 
-    angular.module('app').controller('HeaderController', ['$scope', '$location', '$route', 'lbServices', 'breadcrumbs',
+angular.module('appDevConstruct').controller('HeaderController', ['$scope', '$location', '$route', 'lbServices', 'breadcrumbs',
         function ($scope, $location, $route, breadcrumbs) {
             $scope.location = $location;
             $scope.breadcrumbs = breadcrumbs;

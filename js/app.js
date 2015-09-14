@@ -1,4 +1,8 @@
-var devConstruct = angular.module('devConstruct', []);
+var devConstruct = angular.module('devConstruct', [
+    "ui.router",
+    "lbServices"
+]);
+
 devConstruct.controller('AppController', function ($scope) {
 
 });

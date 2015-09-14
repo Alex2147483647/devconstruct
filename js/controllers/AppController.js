@@ -5,7 +5,12 @@ devConstruct.controller('AppController', function ($rootScope, $scope, $http, $t
 
     });
 
-    console.log(Categories.find());
+    (function ($) {
+        $(function () {
+            console.log(Categories.find());
+        });
+    })(jQuery, window, angular);
+
 });
 
 //console.log(AppController);

@@ -184,7 +184,6 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
                 pageTitle: 'Помощь',
                 pageSubTitle: 'Вам тут помогут)'
             },
-            controller: "",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load();
@@ -245,6 +244,22 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
             templateUrl: "views/profile/reviews.html",
             data: {
                 pageTitle: 'User reviews',
+                pageSubTitle: 'user profile reviews sample'
+            }
+        })
+        .state("profile.portfolio", {
+            url: "/portfolio",
+            templateUrl: "views/profile/portfolio.html",
+            data: {
+                pageTitle: 'User portfolio',
+                pageSubTitle: 'user profile reviews sample'
+            }
+        })
+        .state("profile.friends", {
+            url: "/friends",
+            templateUrl: "views/profile/friends.html",
+            data: {
+                pageTitle: 'User friends',
                 pageSubTitle: 'user profile reviews sample'
             }
         })
@@ -369,9 +384,25 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
         });
 }]);
 
+
 /* Init global settings and run the app */
-devConstruct.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
+devConstruct.run(["$rootScope", "settings", "$state", "Categories", function ($rootScope, settings, $state, Categories) {
     $rootScope.$state = $state;
+
+    //Categories.create( {
+    //    "name": [
+    //        "new"
+    //    ],
+    //    "parent_id": "1",
+    //    "status": "21",
+    //    "id": "12",
+    //    "type": "1",
+    //    "seo_url": "123",
+    //    "sort_order": "1"
+    //});
+
+
+    console.log(Categories.find());
 
     //$rootScope.categories_selected = [];
     //$rootScope.filterType = -1;

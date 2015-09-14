@@ -7,7 +7,7 @@
  * We want to perform a OR.
  */
 
-devConstruct.filter('propsFilter', function () {
+MetronicApp.filter('propsFilter', function () {
     return function (items, props) {
         var out = [];
 
@@ -38,7 +38,7 @@ devConstruct.filter('propsFilter', function () {
     };
 });
 
-devConstruct.controller('UISelectController', function ($scope, $http, $timeout) {
+MetronicApp.controller('UISelectController', function ($scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         Metronic.initAjax(); // initialize core components
     });

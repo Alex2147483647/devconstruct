@@ -1,4 +1,4 @@
-devConstruct.controller('OrderItemController', function ($rootScope, $scope, $http, $timeout) {
+MetronicApp.controller('OrderItemController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         //var seo = location.hash.split('/')[2];
         //$rootScope.single_order = [];

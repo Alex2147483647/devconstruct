@@ -1,6 +1,6 @@
 'use strict';
 
-devConstruct.controller('FreelanceController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders, Countries) {
+MetronicApp.controller('FreelanceController', function ($rootScope, $scope, $http, $timeout, $stateParams, Orders, Countries) {
 
 
     //$scope.addorder = function () {

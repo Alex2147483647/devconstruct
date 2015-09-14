@@ -32,7 +32,7 @@
 <div class="clearfix"></div>
 
 <div ng-controller="AppController" class="page-container">
-	<div ng-include="'tpl/page-head.html'" ng-controller="PageHeadController" class="page-head"></div>
+	<div ng-include="'tpl/page-head.html'" data-ng-controller="PageHeadController" class="page-head"></div>
 
 	<div class="page-content">
 		<div class="main-slider" ng-show="$state.current.name == 'home'">

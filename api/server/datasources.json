@@ -7,5 +7,14 @@
     "name": "mongoDB",
     "connector": "mongodb",
     "user": "devconstructAdmin"
+  },
+  "MySQL": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "devconstruct",
+    "password": "65536",
+    "name": "MySQL",
+    "connector": "mysql",
+    "user": "devuser"
   }
 }

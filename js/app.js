@@ -386,7 +386,7 @@ devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($statePro
 
 
 /* Init global settings and run the app */
-devConstruct.run(["$rootScope", "settings", "$state", "Categories", function ($rootScope, settings, $state, Categories) {
+devConstruct.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state;
 
     //Categories.create( {
@@ -401,8 +401,6 @@ devConstruct.run(["$rootScope", "settings", "$state", "Categories", function ($r
     //    "sort_order": "1"
     //});
 
-
-    console.log(Categories.find());
 
     //$rootScope.categories_selected = [];
     //$rootScope.filterType = -1;

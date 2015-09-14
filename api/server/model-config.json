@@ -30,43 +30,43 @@
     "public": false
   },
   "categories": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "orders": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "users": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "countries": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "l10n": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "products": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "languages": {
-    "dataSource": "mongoDB",
+    "dataSource": "MySQL",
     "public": true,
     "$promise": {},
     "$resolved": true

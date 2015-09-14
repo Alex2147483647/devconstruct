@@ -30,6 +30,12 @@ devConstruct.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
+devConstruct.config(['$controllerProvider', function ($controllerProvider) {
+    // this option might be handy for migrating old apps, but please don't use it
+    // in new ones!
+    $controllerProvider.allowGlobals();
+}]);
+
 /* Setup Rounting For All Pages */
 devConstruct.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url (404)
